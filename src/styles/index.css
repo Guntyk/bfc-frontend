@@ -5,6 +5,7 @@
   --blue: #2671b7;
   --blue-dark: #095296;
   --gray: #888888;
+  --yellow: #fcc11f;
 }
 
 @font-face {
@@ -18,21 +19,10 @@
   font-weight: 300;
 }
 
-body {
-  margin: 0;
-  color: var(--black);
-  font-family: 'Helvetica', -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen', 'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans',
-    'Helvetica Neue', sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-}
-
-code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New', monospace;
-}
-
-html {
-  font-size: var(--font-size);
+.container {
+  margin: 0 auto;
+  padding: 0 4rem;
+  max-width: 128rem;
 }
 
 /* Text */
@@ -61,4 +51,7 @@ html {
 }
 .text-xs {
   font-size: 1.2rem;
+}
+.inscription {
+  font-size: 1rem;
 }

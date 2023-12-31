@@ -1,0 +1,40 @@
+.header {
+  display: flex;
+  align-items: center;
+  font-size: 1.4rem;
+  padding: 1.4rem 0;
+}
+
+.logo {
+  display: grid;
+  place-items: center;
+  width: 6.7rem;
+  height: 7.1963rem;
+}
+
+.navigation {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+}
+
+.nav-links {
+  display: flex;
+  align-items: center;
+  gap: 4.4rem;
+  margin-left: 5.6rem;
+  padding: 1rem;
+}
+
+.nav-link:nth-child(3) a {
+  padding: 0.3rem 1rem;
+  border: 0.1rem solid var(--yellow);
+  border-radius: 2rem;
+}
+
+.contact-phone {
+  padding: 1rem 1.5rem;
+  border: 0.1rem solid var(--black);
+  border-radius: 2rem;
+}

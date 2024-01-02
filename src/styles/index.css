@@ -2,9 +2,11 @@
   --font-size: 10px;
 
   --black: #212121;
+  --light-blue: #cee8ff;
   --blue: #2671b7;
-  --blue-dark: #095296;
+  --dark-blue: #095296;
   --gray: #888888;
+  --dark-gray: #484848;
   --yellow: #fcc11f;
 }
 
@@ -19,6 +21,12 @@
   font-weight: 300;
 }
 
+body {
+  color: var(--black);
+  font-weight: 300;
+  line-height: 1;
+}
+
 .container {
   margin: 0 auto;
   padding: 0 4rem;
@@ -31,6 +39,7 @@
 .title,
 .title-s {
   font-family: 'Kharkiv';
+  font-weight: 400;
 }
 .title-xl {
   font-size: 3.6rem;

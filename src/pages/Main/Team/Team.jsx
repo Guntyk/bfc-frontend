@@ -88,7 +88,7 @@ export default function Team() {
 
   return (
     <section className='team'>
-      <h2 className='title'>Команда</h2>
+      <h2 className='title underline'>Команда</h2>
       <ul className='team-list'>
         {people.map(({ id, name, surname, fathername, role, photo }) => (
           <li className='person-card' key={id}>

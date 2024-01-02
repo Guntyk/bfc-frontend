@@ -64,3 +64,18 @@ body {
 .inscription {
   font-size: 1rem;
 }
+
+.title.underline {
+  display: inline-block;
+  position: relative;
+  margin-bottom: 5.5rem;
+}
+.title.underline::after {
+  content: '';
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  width: 100%;
+  height: 0.1rem;
+  background: var(--blue);
+}

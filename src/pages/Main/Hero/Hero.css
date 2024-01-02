@@ -1,0 +1,30 @@
+.hero {
+  padding: 8.7rem 0 10.6rem;
+  color: #fff;
+  text-align: center;
+  background: url(images/background-image.jpg) no-repeat 50% / cover;
+}
+
+.hero p {
+  display: inline-block;
+  max-width: 60rem;
+  margin: 1.5rem 0 4rem;
+}
+
+.activities {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 1rem;
+  margin: 0 auto;
+  max-width: 700px;
+}
+
+.activity {
+  padding: 0.9rem 2.5rem;
+  font-weight: 300;
+  border: 0.1rem solid #fff;
+  border-radius: 2rem;
+  white-space: nowrap;
+}

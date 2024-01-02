@@ -3,31 +3,33 @@ import 'components/Header/Header.css';
 
 export default function Header() {
   const links = [
-    { name: 'Команда', link: '#team' },
-    { name: 'Новини', link: '#news' },
-    { name: 'Опитування', link: '#survey' },
-    { name: 'Контакти', link: '#contacts' },
+    { id: 1, name: 'Команда', link: '#team' },
+    { id: 2, name: 'Новини', link: '#news' },
+    { id: 3, name: 'Опитування', link: '#survey' },
+    { id: 4, name: 'Контакти', link: '#contacts' },
   ];
 
   return (
-    <header className='header'>
-      <a className='logo' href='/'>
-        <img src={logo} alt='Logo' />
-      </a>
-      <div className='navigation'>
-        <nav>
-          <ul className='nav-links'>
-            {links.map(({ name, link }) => (
-              <li className='nav-link'>
-                <a href={link}>{name}</a>
-              </li>
-            ))}
-          </ul>
-        </nav>
-        <a href='tel:380960082206' className='contact-phone'>
-          +380 (96) 008-22-06
+    <div className='container'>
+      <header className='header'>
+        <a className='logo' href='/'>
+          <img src={logo} alt='Logo' />
         </a>
-      </div>
-    </header>
+        <div className='navigation'>
+          <nav>
+            <ul className='nav-links'>
+              {links.map(({ id, name, link }) => (
+                <li className='nav-link' key={id}>
+                  <a href={link}>{name}</a>
+                </li>
+              ))}
+            </ul>
+          </nav>
+          <a href='tel:380960082206' className='contact-phone'>
+            +380 (96) 008-22-06
+          </a>
+        </div>
+      </header>
+    </div>
   );
 }

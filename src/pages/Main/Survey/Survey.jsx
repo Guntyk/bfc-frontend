@@ -6,7 +6,7 @@ import 'pages/Main/Survey/Survey.css';
 
 export default function Survey() {
   return surveys.length > 0 ? (
-    <section className='surveys'>
+    <section className='surveys' id='survey'>
       <div className='container'>
         <h2 className='title underline'>Опитування</h2>
       </div>

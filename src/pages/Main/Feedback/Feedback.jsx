@@ -9,7 +9,9 @@ export default function Feedback() {
       <h2 className='title underline'>Зворотній зв’язок</h2>
       <div className='feedback-wrapper'>
         <div>
-          <h3 className='title-xl feedback-title'>Контакти</h3>
+          <h3 className='title-xl feedback-title' id='contacts'>
+            Контакти
+          </h3>
           <div className='contacts'>
             {Object.entries(contacts).map(([contact, value]) => {
               if (contact === 'phone') {

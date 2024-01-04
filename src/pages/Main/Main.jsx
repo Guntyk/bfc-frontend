@@ -1,6 +1,7 @@
+import Survey from 'pages/Main/Survey/Survey';
 import Hero from 'pages/Main/Hero/Hero';
 import Team from 'pages/Main/Team/Team';
-import News from './News/News';
+import News from 'pages/Main/News/News';
 
 export default function Main() {
   return (
@@ -10,6 +11,7 @@ export default function Main() {
         <Team />
         <News />
       </div>
+      <Survey />
     </main>
   );
 }

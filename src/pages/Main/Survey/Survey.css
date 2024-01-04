@@ -1,0 +1,81 @@
+.surveys {
+  padding: 10rem 0 7rem;
+}
+
+.survey-background {
+  margin: 3rem 0;
+  padding: 3.8rem 0 3.1rem;
+  background: linear-gradient(265deg, #d7e8ff 0%, #fff0d1 98.3%);
+}
+
+.survey {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.survey > div {
+  max-width: 50%;
+}
+
+.survey-content {
+  position: relative;
+  max-height: 26.5rem;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  display: -webkit-box;
+  -webkit-line-clamp: 13;
+  -webkit-box-orient: vertical;
+}
+
+.choose-option-title {
+  position: relative;
+}
+.choose-option-title::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 43%;
+  height: 1px;
+  background: var(--yellow);
+}
+
+.options {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem;
+  margin: 2.5rem 0 4.5rem;
+}
+
+.options button {
+  padding: 0.6rem 1.4rem;
+  color: var(--blue);
+  font-size: 1.6rem;
+  line-height: 1;
+  border-radius: 2rem;
+  border: 0.1rem solid var(--blue);
+}
+.options button:hover {
+  color: #fff;
+  background: var(--blue);
+}
+.options button:active {
+  background: var(--dark-blue);
+}
+
+.confirm-btn {
+  padding: 0.6rem 1.4rem;
+  color: var(--dark-gray);
+  font-size: 1.6rem;
+  line-height: 1;
+  border-radius: 2rem;
+  border: 0.1rem solid var(--dark-gray);
+}
+
+.read-more-btn {
+  display: block;
+  margin: 1.5rem 0 0 auto;
+  color: var(--blue);
+  border-bottom: 0.1rem solid var(--blue);
+}

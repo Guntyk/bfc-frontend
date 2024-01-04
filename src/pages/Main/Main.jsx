@@ -1,3 +1,4 @@
+import Feedback from 'pages/Main/Feedback/Feedback';
 import Survey from 'pages/Main/Survey/Survey';
 import Hero from 'pages/Main/Hero/Hero';
 import Team from 'pages/Main/Team/Team';
@@ -12,6 +13,9 @@ export default function Main() {
         <News />
       </div>
       <Survey />
+      <div className='container'>
+        <Feedback />
+      </div>
     </main>
   );
 }

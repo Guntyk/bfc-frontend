@@ -1,0 +1,52 @@
+.background {
+  display: grid;
+  place-items: center;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  opacity: 0;
+  background: linear-gradient(0deg, rgba(0, 0, 0, 0.2) 0%, rgba(0, 0, 0, 0.2) 100%);
+  backdrop-filter: blur(0.5rem);
+  pointer-events: none;
+  transition: 0.3s;
+  z-index: 999;
+}
+
+.background.active {
+  opacity: 1;
+  pointer-events: all;
+}
+
+.modal {
+  display: flex;
+  flex-direction: column;
+  margin: 0 1rem;
+  padding: 3rem;
+  max-width: 77.2rem;
+  max-height: 57rem;
+  border-radius: 2rem;
+  background: #fff;
+}
+
+.modal .heading {
+  display: flex;
+  align-items: start;
+  margin-bottom: 3rem;
+}
+
+.modal .close {
+  margin-left: auto;
+}
+
+.modal .content {
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+  overflow-x: hidden;
+}
+
+.modal .list {
+  margin-left: 2rem;
+}

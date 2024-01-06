@@ -8,9 +8,8 @@
 
 .team-list {
   display: flex;
-  justify-content: center;
   gap: 5rem;
-  padding-bottom: 5.9rem;
+  padding: 0 4rem 5.9rem 4rem;
   overflow-y: hidden;
 }
 
@@ -51,7 +50,6 @@
 
   .team-list {
     justify-content: start;
-    padding: 0 4rem 5.9rem 4rem;
   }
 
   .person-card {
@@ -103,6 +101,7 @@
   .person-card img {
     margin: 0;
     height: 100%;
+    aspect-ratio: 1/1;
     border-radius: 0;
   }
 }

@@ -36,9 +36,7 @@ export default function Survey() {
                 </div>
                 <div>
                   <div className='survey-content'>
-                    {description.map((descriptionObj) => (
-                      <RichContent content={descriptionObj} />
-                    ))}
+                    <RichContent content={description} />
                   </div>
                   {textLength > 800 && <button className='read-more-btn text-s'>Читати повністю</button>}
                 </div>

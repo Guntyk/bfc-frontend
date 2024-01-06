@@ -1,17 +1,11 @@
 import { Link } from 'react-router-dom';
 import { formatPhoneNumber } from 'helpers/formatPhoneNumber';
 import { contacts } from 'constants/contacts';
+import { links } from 'constants/links';
 import logo from 'icons/logo.svg';
 import 'components/Footer/Footer.css';
 
 export default function Footer() {
-  const links = [
-    { id: 1, name: 'Команда', link: '#team' },
-    { id: 2, name: 'Новини', link: '#news' },
-    { id: 3, name: 'Опитування', link: '#survey' },
-    { id: 4, name: 'Контакти', link: '#contacts' },
-  ];
-
   return (
     <div className='container'>
       <footer className='footer'>

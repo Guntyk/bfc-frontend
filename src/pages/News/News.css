@@ -1,5 +1,6 @@
 .news-archive {
   padding: 7.3rem 0 11.7rem;
+  scroll-behavior: unset;
 }
 
 .news-archive-items {

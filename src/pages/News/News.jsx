@@ -1,10 +1,14 @@
 import { formatDateToLocalFormat } from 'helpers/formatDateToLocalFormat';
 import { news } from 'constants/news';
 import 'pages/News/News.css';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 
 export default function News() {
-  const [newsAmount, setNewsAmount] = useState(1);
+  const [newsAmount, setNewsAmount] = useState(10);
+
+  useEffect(() => {
+    window.scrollTo({ top: 0, behavior: 'instant' });
+  }, []);
 
   return (
     <div className='container'>
@@ -35,14 +39,16 @@ export default function News() {
             ),
           )}
         </div>
-        <button
-          className='blue-btn more-archive-news'
-          onClick={() => {
-            setNewsAmount((newsAmount) => newsAmount + 1);
-          }}
-        >
-          Показати більше
-        </button>
+        {news.length > newsAmount && (
+          <button
+            className='blue-btn more-archive-news'
+            onClick={() => {
+              setNewsAmount((newsAmount) => newsAmount + 10);
+            }}
+          >
+            Показати більше
+          </button>
+        )}
       </div>
     </div>
   );

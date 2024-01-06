@@ -1,0 +1,10 @@
+.list {
+  display: flex;
+  flex-direction: column;
+  gap: 0.3rem;
+}
+
+.list-item {
+  list-style-type: disc;
+  line-height: 1.25;
+}

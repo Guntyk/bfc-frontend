@@ -8,8 +8,8 @@ export default function Main() {
   return (
     <main>
       <Hero />
+      <Team />
       <div className='container'>
-        <Team />
         <News />
       </div>
       <Survey />

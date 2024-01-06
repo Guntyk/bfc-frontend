@@ -1,6 +1,5 @@
-import Paragraph from 'components/Paragraph';
-import Image from 'components/Image';
-import List from 'components/List';
+import Paragraph from 'components/RichContent/Types/Paragraph';
+import RichContent from 'components/RichContent/RichContent';
 import { surveys } from 'constants/surveys';
 import 'pages/Main/Survey/Survey.css';
 
@@ -12,7 +11,7 @@ export default function Survey() {
       </div>
       {surveys.map(({ attributes: { yes_no_options, options, description } }) => {
         const textLength = description.flatMap((desc) => desc.children).reduce((totalLength, { text }) => totalLength + text.length, 0);
-        console.log(textLength);
+
         return (
           <div className='survey-background'>
             <div className='container'>
@@ -37,18 +36,9 @@ export default function Survey() {
                 </div>
                 <div>
                   <div className='survey-content'>
-                    {description.map(({ type, children, src, alt, items }) => {
-                      switch (type) {
-                        case 'paragraph':
-                          return <Paragraph children={children} />;
-                        case 'image':
-                          return <Image src={src} alt={alt} />;
-                        case 'list':
-                          return <List items={items} />;
-                        default:
-                          return null;
-                      }
-                    })}
+                    {description.map((descriptionObj) => (
+                      <RichContent content={descriptionObj} />
+                    ))}
                   </div>
                   {textLength > 800 && <button className='read-more-btn text-s'>Читати повністю</button>}
                 </div>

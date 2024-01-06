@@ -346,7 +346,7 @@ export const news = [
       cover_description: null,
       createdAt: '2023-12-31T00:53:58.430Z',
       updatedAt: '2023-12-31T00:53:58.930Z',
-      publishedAt: '2023-12-31T00:53:58.927Z',
+      publishedAt: '2023-12-06T00:53:58.927Z',
       cover: {
         data: {
           id: 5,

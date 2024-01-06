@@ -123,3 +123,21 @@ p.underline {
   background: rgba(38, 113, 183, 0.1);
   backdrop-filter: blur(0.2rem);
 }
+
+.blue-btn {
+  padding: 0.75rem 2rem;
+  color: #fff;
+  font-size: 1.8rem;
+  border-radius: 2rem;
+  background: var(--blue);
+  border: 0.1rem solid var(--blue);
+}
+.blue-btn:hover {
+  background: var(--dark-blue);
+  border: 0.1rem solid var(--dark-blue);
+}
+.blue-btn:active {
+  color: var(--blue);
+  background: #fff;
+  border: 0.1rem solid var(--blue);
+}

@@ -1,9 +1,11 @@
+import { useHistory } from 'react-router-dom';
 import { formatDateToLocalFormat } from 'helpers/formatDateToLocalFormat';
 import { news } from 'constants/news';
 import 'pages/Main/News/News.css';
 
 export default function News() {
   const latestNews = news.slice(-5).reverse();
+  const { push } = useHistory();
 
   return (
     <div className='news' id='news'>
@@ -35,7 +37,16 @@ export default function News() {
           ),
         )}
       </ul>
-      {news.length > 5 && <button className='more-news text-l'>Більше новин</button>}
+      {news.length > 5 && (
+        <button
+          className='more-news blue-btn'
+          onClick={() => {
+            push('/news');
+          }}
+        >
+          Більше новин
+        </button>
+      )}
     </div>
   );
 }

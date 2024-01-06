@@ -7,7 +7,9 @@ export default function News() {
 
   return (
     <div className='content' id='news'>
-      <h2 className='title underline'>Останні новини</h2>
+      <div className='container'>
+        <h2 className='title underline'>Останні новини</h2>
+      </div>
       <ul className='news-list'>
         {latestNews.map(
           ({

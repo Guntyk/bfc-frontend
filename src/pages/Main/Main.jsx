@@ -9,9 +9,7 @@ export default function Main() {
     <main>
       <Hero />
       <Team />
-      <div className='container'>
-        <News />
-      </div>
+      <News />
       <Survey />
       <div className='container'>
         <Feedback />

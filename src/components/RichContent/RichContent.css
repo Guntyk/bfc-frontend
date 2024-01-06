@@ -12,7 +12,7 @@
 .quote {
   display: block;
   position: relative;
-  border-left: 0.3rem solid var(--black);
+  border-left: 0.3rem solid var(--blue);
   padding: 1.5rem;
   background: #f5f5f5;
   line-height: 1.4;

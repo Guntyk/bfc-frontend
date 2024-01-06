@@ -1,7 +1,11 @@
 .news-list {
   display: flex;
-  overflow-y: hidden;
   gap: 2.5rem;
+  overflow-y: hidden;
+  padding: 0 4rem;
+}
+.news-list::-webkit-scrollbar {
+  display: none;
 }
 
 .news-card {
@@ -47,4 +51,7 @@
   color: #fff;
   border-radius: 2rem;
   background: var(--blue);
+}
+
+@media (max-width: 1280px) {
 }

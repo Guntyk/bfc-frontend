@@ -32,7 +32,7 @@
   object-fit: cover;
 }
 
-.person-card button {
+.person-card .read-bio {
   margin-top: 0.8rem;
 }
 

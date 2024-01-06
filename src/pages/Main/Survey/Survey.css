@@ -19,13 +19,17 @@
 }
 
 .survey-content {
+  display: -webkit-box;
+  -webkit-line-clamp: 12;
+  -webkit-box-orient: vertical;
+  text-overflow: ellipsis;
   position: relative;
   max-height: 26.5rem;
   overflow: hidden;
-  text-overflow: ellipsis;
-  display: -webkit-box;
-  -webkit-line-clamp: 13;
-  -webkit-box-orient: vertical;
+}
+
+.survey-content p {
+  margin-bottom: 1rem;
 }
 
 .choose-option-title {
@@ -56,6 +60,7 @@
   border-radius: 2rem;
   border: 0.1rem solid var(--blue);
 }
+.options button.active,
 .options button:hover {
   color: #fff;
   background: var(--blue);
@@ -63,14 +68,8 @@
 .options button:active {
   background: var(--dark-blue);
 }
-
-.confirm-btn {
-  padding: 0.6rem 1.4rem;
-  color: var(--dark-gray);
-  font-size: 1.6rem;
-  line-height: 1;
-  border-radius: 2rem;
-  border: 0.1rem solid var(--dark-gray);
+.options button.active {
+  pointer-events: none;
 }
 
 .read-more-btn {
@@ -78,4 +77,18 @@
   margin: 1.5rem 0 0 auto;
   color: var(--blue);
   border-bottom: 0.1rem solid var(--blue);
+}
+
+.thanks {
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1.4rem;
+  margin-bottom: 5rem;
+}
+
+.error {
+  color: rgb(216, 35, 35);
+  margin-bottom: 0.5rem;
 }

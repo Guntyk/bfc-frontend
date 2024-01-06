@@ -1,8 +1,7 @@
 export default function Paragraph({ children }) {
   return children.length === 1 && children[0].text === '' ? (
     <>
-      <br />
-      <br />
+      {/* <br /> */}
     </>
   ) : (
     <p className='text'>

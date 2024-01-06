@@ -232,7 +232,7 @@ export const surveys = [
           children: [
             {
               type: 'text',
-              text: 'Варіант 4',
+              text: 'Варіант 5',
             },
           ],
         },
@@ -241,7 +241,7 @@ export const surveys = [
           children: [
             {
               type: 'text',
-              text: 'Варіант 4',
+              text: 'Варіант 6',
             },
           ],
         },
@@ -250,7 +250,7 @@ export const surveys = [
           children: [
             {
               type: 'text',
-              text: 'Варіант 4',
+              text: 'Варіант 7',
             },
           ],
         },
@@ -259,7 +259,7 @@ export const surveys = [
           children: [
             {
               type: 'text',
-              text: 'Варіант 4',
+              text: 'Варіант 8',
             },
           ],
         },

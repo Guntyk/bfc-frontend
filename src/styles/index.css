@@ -101,3 +101,25 @@ p.underline {
 .strikethrough {
   text-decoration: line-through;
 }
+
+/* Buttons */
+.gray-btn {
+  padding: 0.6rem 1.4rem;
+  color: var(--gray);
+  font-size: 1.6rem;
+  line-height: 1;
+  border-radius: 2rem;
+  border: 0.1rem solid;
+}
+.gray-btn:hover {
+  color: var(--black);
+  border: 0.1rem solid var(--black);
+  background: rgba(33, 33, 33, 0.1);
+  backdrop-filter: blur(0.2rem);
+}
+.gray-btn:active {
+  color: var(--blue);
+  border: 1px solid var(--blue);
+  background: rgba(38, 113, 183, 0.1);
+  backdrop-filter: blur(0.2rem);
+}

@@ -31,7 +31,7 @@ export default function Team() {
               <div className='person-bio'>
                 {window.innerWidth >= 768 && (
                   <>
-                    <button
+                    <button className='gray-btn'
                       onClick={() => {
                         setOpenModalId(id);
                       }}

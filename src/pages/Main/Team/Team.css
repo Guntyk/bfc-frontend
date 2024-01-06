@@ -24,7 +24,7 @@
   font-weight: 300;
 }
 
-.person-card img {
+.person-card > img {
   margin: 1rem 0;
   width: 22rem;
   height: 30rem;

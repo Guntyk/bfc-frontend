@@ -26,7 +26,11 @@ export default function Survey() {
                         <button>Ні, не підтримую</button>
                       </>
                     ) : (
-                      options.map((option) => <button>{option}</button>)
+                      options.map(({ children }) => (
+                        <button>
+                          <Paragraph children={children} />
+                        </button>
+                      ))
                     )}
                   </div>
                   <button className='confirm-btn'>Я підтверджую свій вибір</button>

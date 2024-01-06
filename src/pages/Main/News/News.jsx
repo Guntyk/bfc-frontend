@@ -6,7 +6,7 @@ export default function News() {
   const latestNews = news.slice(-5).reverse();
 
   return (
-    <div className='content' id='news'>
+    <div className='news' id='news'>
       <div className='container'>
         <h2 className='title underline'>Останні новини</h2>
       </div>

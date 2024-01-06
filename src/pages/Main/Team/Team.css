@@ -9,13 +9,13 @@
 
 .team-list {
   display: flex;
-  gap: 5rem;
+  gap: 2.5rem;
   padding: 0 4rem 5.9rem 4rem;
   overflow-y: hidden;
 }
 
 .person-card {
-  max-width: 23rem;
+  max-width: 22rem;
 }
 
 .person-card .role {
@@ -26,7 +26,7 @@
 
 .person-card img {
   margin: 1rem 0;
-  width: 23rem;
+  width: 22rem;
   height: 30rem;
   border-radius: 2rem;
   object-fit: cover;
@@ -96,5 +96,11 @@
     height: 100%;
     aspect-ratio: 1/1;
     border-radius: 0;
+  }
+}
+
+@media (max-width: 768px) {
+  .person-card:nth-child(2) .name {
+    letter-spacing: -0.25px;
   }
 }

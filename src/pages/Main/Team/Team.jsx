@@ -20,38 +20,37 @@ export default function Team() {
       </div>
       <ul className='team-list'>
         {team.map(({ id, attributes: { name, surname, fathername, role, photo, description } }) => (
-          <>
-            <li
-              className='person-card'
-              key={id}
-              onClick={() => {
-                handleClick(id);
-              }}
-            >
-              <div className='person-bio'>
-                {window.innerWidth >= 768 && (
-                  <>
-                    <button className='gray-btn'
-                      onClick={() => {
-                        setOpenModalId(id);
-                      }}
-                    >
-                      Читати біографію
-                    </button>
-                    <div className='person-description text-s'>
-                      <div className='content-wrapper'>
-                        <RichContent content={description} />
-                      </div>
+          <li
+            className='person-card'
+            key={id}
+            onClick={() => {
+              handleClick(id);
+            }}
+          >
+            <div className='person-bio'>
+              {window.innerWidth >= 768 && (
+                <>
+                  <button
+                    className='gray-btn'
+                    onClick={() => {
+                      setOpenModalId(id);
+                    }}
+                  >
+                    Читати біографію
+                  </button>
+                  <div className='person-description text-s'>
+                    <div className='content-wrapper'>
+                      <RichContent content={description} />
                     </div>
-                  </>
-                )}
-                <p className='text-xs role'>{role}</p>
-                <p className='text name'>{`${surname} ${name} ${fathername}`}</p>
-              </div>
-              <img src={`http://localhost:1337${photo.data.attributes.url}`} alt='person' />
-            </li>
+                  </div>
+                </>
+              )}
+              <p className='text-xs role'>{role}</p>
+              <p className='text name'>{`${surname} ${name} ${fathername}`}</p>
+            </div>
+            <img src={`http://localhost:1337${photo.data.attributes.url}`} alt='person' />
             <Modal id={id} title={`${surname} ${name} ${fathername}`} isActive={isModalOpen} setIsActive={setOpenModalId} content={description} />
-          </>
+          </li>
         ))}
       </ul>
     </section>

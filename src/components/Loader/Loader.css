@@ -1,0 +1,26 @@
+.loader-wrapper {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  margin-top: 10rem;
+}
+
+.loader {
+  border: 0.4rem solid var(--blue);
+  border-left-color: transparent;
+  width: 3.6rem;
+  height: 3.6rem;
+  animation: spin89345 1s linear infinite;
+  border-radius: 50%;
+}
+
+@keyframes spin89345 {
+  0% {
+    transform: rotate(0deg);
+  }
+
+  100% {
+    transform: rotate(360deg);
+  }
+}

@@ -2,6 +2,7 @@
   display: flex;
   gap: 2.5rem;
   padding: 5rem 0 8.5rem;
+  min-height: 90vh;
 }
 
 .news-cover {

@@ -343,7 +343,7 @@ export const news = [
           ],
         },
       ],
-      cover_description: null,
+      cover_description: 'Деякий текст опису обкладинки',
       createdAt: '2023-12-31T00:53:58.430Z',
       updatedAt: '2023-12-31T00:53:58.930Z',
       publishedAt: '2023-12-06T00:53:58.927Z',
@@ -407,7 +407,7 @@ export const news = [
     },
   },
   {
-    id: 1,
+    id: 3,
     attributes: {
       title: 'На головній вулиці посадили нові дерева',
       views: '0',
@@ -627,7 +627,7 @@ export const news = [
     },
   },
   {
-    id: 2,
+    id: 4,
     attributes: {
       title: 'Прийнято бюджет на наступний рік',
       views: '0',
@@ -814,7 +814,7 @@ export const news = [
     },
   },
   {
-    id: 1,
+    id: 5,
     attributes: {
       title: 'На головній вулиці посадили нові дерева',
       views: '0',
@@ -1034,7 +1034,7 @@ export const news = [
     },
   },
   {
-    id: 2,
+    id: 6,
     attributes: {
       title: 'Прийнято бюджет на наступний рік',
       views: '0',

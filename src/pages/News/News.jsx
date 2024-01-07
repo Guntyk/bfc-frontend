@@ -1,10 +1,12 @@
+import { useHistory } from 'react-router-dom';
+import { useEffect, useState } from 'react';
 import { formatDateToLocalFormat } from 'helpers/formatDateToLocalFormat';
 import { news } from 'constants/news';
 import 'pages/News/News.css';
-import { useEffect, useState } from 'react';
 
 export default function News() {
   const [newsAmount, setNewsAmount] = useState(10);
+  const { push } = useHistory();
 
   useEffect(() => {
     window.scrollTo({ top: 0, behavior: 'instant' });
@@ -17,6 +19,7 @@ export default function News() {
         <div className='news-archive-items'>
           {news.slice(0, newsAmount).map(
             ({
+              id,
               attributes: {
                 title,
                 views,
@@ -28,7 +31,12 @@ export default function News() {
                 },
               },
             }) => (
-              <div className='news-card'>
+              <div
+                className='news-card'
+                onClick={() => {
+                  push(`/news/${id}`);
+                }}
+              >
                 <div className='news-data-wrapper text-xs'>
                   <span>{formatDateToLocalFormat(publishedAt)}</span>
                   <span className='views'>{views}</span>

@@ -15,6 +15,7 @@ export default function News() {
       <ul className='news-list'>
         {latestNews.map(
           ({
+            id,
             attributes: {
               title,
               views,
@@ -26,7 +27,12 @@ export default function News() {
               },
             },
           }) => (
-            <li className='news-card'>
+            <li
+              className='news-card'
+              onClick={() => {
+                push(`/news/${id}`);
+              }}
+            >
               <div className='news-data-wrapper text-xs'>
                 <span>{formatDateToLocalFormat(publishedAt)}</span>
                 <span className='views'>{views}</span>

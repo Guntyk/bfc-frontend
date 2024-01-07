@@ -15,6 +15,12 @@
 .news-card {
   min-width: 22rem;
   max-width: 22rem;
+  cursor: pointer;
+  transition: 0.2s;
+}
+
+.news-card:hover {
+  transform: translateY(-0.2rem);
 }
 
 .news-card img {
@@ -36,12 +42,12 @@
   margin: 3.2rem 0 3.8rem;
 }
 
-.news-card .views {
+.views {
   display: flex;
   align-items: center;
   gap: 0.2rem;
 }
-.news-card .views::after {
+.views::after {
   content: url(icons/eye.svg);
   display: inline-block;
   width: 2.4rem;

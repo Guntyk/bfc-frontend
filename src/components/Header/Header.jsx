@@ -1,3 +1,4 @@
+import { Link } from 'react-router-dom';
 import { links } from 'constants/links';
 import logo from 'icons/logo.svg';
 import 'components/Header/Header.css';
@@ -6,9 +7,9 @@ export default function Header() {
   return (
     <div className='container'>
       <header className='header'>
-        <a className='logo' href='/'>
-          <img src={logo} alt='Logo' />
-        </a>
+        <Link className='logo' to='/'>
+          <img src={logo} alt='Логотип' />
+        </Link>
         <div className='navigation'>
           <nav>
             <ul className='nav-links'>

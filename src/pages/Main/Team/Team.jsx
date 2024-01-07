@@ -1,11 +1,17 @@
-import { useState } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
+import { useEffect, useState } from 'react';
+import { teamSelector } from 'redux/team/selectors';
+import { getTeam } from 'redux/team/thunk';
 import RichContent from 'components/RichContent/RichContent';
-import { team } from 'constants/team';
-import 'pages/Main/Team/Team.css';
+import Loader from 'components/Loader/Loader';
 import Modal from 'components/Modal/Modal';
+import { backendURL } from 'constants/backendURL';
+import 'pages/Main/Team/Team.css';
 
 export default function Team() {
   const [isModalOpen, setOpenModalId] = useState(false);
+  const team = useSelector(teamSelector);
+  const dispatch = useDispatch();
 
   function handleClick(id) {
     if (window.innerWidth < 768) {
@@ -13,46 +19,56 @@ export default function Team() {
     }
   }
 
+  useEffect(() => {
+    if (team.length === 0) {
+      dispatch(getTeam());
+    }
+  }, []);
+
   return (
     <section className='team' id='team'>
       <div className='container'>
         <h2 className='title underline'>Команда</h2>
       </div>
-      <ul className='team-list'>
-        {team.map(({ id, attributes: { name, surname, fathername, role, photo, description } }) => (
-          <li
-            className='person-card'
-            key={id}
-            onClick={() => {
-              handleClick(id);
-            }}
-          >
-            <div className='person-bio'>
-              {window.innerWidth >= 768 && (
-                <>
-                  <button
-                    className='gray-btn read-bio'
-                    onClick={() => {
-                      setOpenModalId(id);
-                    }}
-                  >
-                    Читати біографію
-                  </button>
-                  <div className='person-description text-s'>
-                    <div className='content-wrapper'>
-                      <RichContent content={description} />
+      {team.length > 0 ? (
+        <ul className='team-list'>
+          {team.map(({ id, attributes: { name, surname, fathername, role, photo, description } }) => (
+            <li
+              className='person-card'
+              key={id}
+              onClick={() => {
+                handleClick(id);
+              }}
+            >
+              <div className='person-bio'>
+                {window.innerWidth >= 768 && (
+                  <>
+                    <button
+                      className='gray-btn read-bio'
+                      onClick={() => {
+                        setOpenModalId(id);
+                      }}
+                    >
+                      Читати біографію
+                    </button>
+                    <div className='person-description text-s'>
+                      <div className='content-wrapper'>
+                        <RichContent content={description} />
+                      </div>
                     </div>
-                  </div>
-                </>
-              )}
-              <p className='text-xs role'>{role}</p>
-              <p className='text name'>{`${surname} ${name} ${fathername}`}</p>
-            </div>
-            <img src={`http://localhost:1337${photo.data.attributes.url}`} alt='person' />
-            <Modal id={id} title={`${surname} ${name} ${fathername}`} isActive={isModalOpen} setIsActive={setOpenModalId} content={description} />
-          </li>
-        ))}
-      </ul>
+                  </>
+                )}
+                <p className='text-xs role'>{role}</p>
+                <p className='text name'>{`${surname} ${name} ${fathername}`}</p>
+              </div>
+              <img src={`${backendURL}${photo.data.attributes.url}`} alt='person' />
+              <Modal id={id} title={`${surname} ${name} ${fathername}`} isActive={isModalOpen} setIsActive={setOpenModalId} content={description} />
+            </li>
+          ))}
+        </ul>
+      ) : (
+        <Loader />
+      )}
     </section>
   );
 }

@@ -1,14 +1,17 @@
-import { Switch, Route } from 'react-router-dom';
+import { Switch, Route, useLocation } from 'react-router-dom';
 import NewsDetails from 'pages/News/NewsDetails/NewsDetails';
+import Error from 'pages/Error/Error';
 import Main from 'pages/Main/Main';
 import News from 'pages/News/News';
 import Footer from 'components/Footer/Footer';
 import Header from 'components/Header/Header';
 
 export default function App() {
+  const { pathname } = useLocation();
+
   return (
     <>
-      <Header />
+      {pathname !== '/error' && <Header />}
       <Switch>
         <Route exact path='/'>
           <Main />
@@ -19,8 +22,11 @@ export default function App() {
         <Route exact path='/news/:newsId'>
           <NewsDetails />
         </Route>
+        <Route exact path='/error'>
+          <Error />
+        </Route>
       </Switch>
-      <Footer />
+      {pathname !== '/error' && <Footer />}
     </>
   );
 }

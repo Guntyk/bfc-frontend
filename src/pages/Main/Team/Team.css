@@ -3,13 +3,10 @@
   padding: 7rem 0 10rem;
 }
 
-.team .title {
-  margin-bottom: 5.6rem;
-}
-
 .team-list {
   display: flex;
   gap: 2.5rem;
+  margin-top: 5.6rem;
   padding: 0 4rem 5.9rem 4rem;
   overflow-y: hidden;
 }

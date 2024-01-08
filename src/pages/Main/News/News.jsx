@@ -1,4 +1,4 @@
-import { useHistory } from 'react-router-dom';
+import { useHistory, Redirect } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 import { useEffect } from 'react';
 import { newsSelector } from 'redux/news/selectors';
@@ -29,40 +29,44 @@ export default function News() {
       <div className='container'>
         <h2 className='title underline'>Останні новини</h2>
       </div>
-      {news.length > 0 ? (
-        <ul className='news-list'>
-          {news.slice(0, 5).map(
-            ({
-              id,
-              attributes: {
-                title,
-                views,
-                publishedAt,
-                cover: {
-                  data: {
-                    attributes: { url },
+      {news[0] !== 'error' ? (
+        news.length > 0 ? (
+          <ul className='news-list'>
+            {news.slice(0, 5).map(
+              ({
+                id,
+                attributes: {
+                  title,
+                  views,
+                  publishedAt,
+                  cover: {
+                    data: {
+                      attributes: { url },
+                    },
                   },
                 },
-              },
-            }) => (
-              <li
-                className='news-card'
-                onClick={() => {
-                  push(`/news/${id}`);
-                }}
-              >
-                <div className='news-data-wrapper text-xs'>
-                  <span>{formatDateToLocalFormat(publishedAt)}</span>
-                  <span className='views'>{views}</span>
-                </div>
-                <img src={`http://localhost:1337${url}`} alt='news cover' />
-                <p className='text'>{title}</p>
-              </li>
-            ),
-          )}
-        </ul>
+              }) => (
+                <li
+                  className='news-card'
+                  onClick={() => {
+                    push(`/news/${id}`);
+                  }}
+                >
+                  <div className='news-data-wrapper text-xs'>
+                    <span>{formatDateToLocalFormat(publishedAt)}</span>
+                    <span className='views'>{views}</span>
+                  </div>
+                  <img src={`http://localhost:1337${url}`} alt='news cover' />
+                  <p className='text'>{title}</p>
+                </li>
+              ),
+            )}
+          </ul>
+        ) : (
+          <Loader />
+        )
       ) : (
-        <Loader />
+        <Redirect to='/error' />
       )}
       {news.length > 5 && (
         <button

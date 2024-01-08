@@ -1,5 +1,5 @@
 import { getTeamFetch } from 'api/requests';
-import { getTeamAction } from 'redux/team/actionCreators';
+import { getTeamAction, setErrorAction } from 'redux/team/actionCreators';
 
 export function getTeam() {
   return (dispatch) => {
@@ -7,8 +7,8 @@ export function getTeam() {
       if (team) {
         dispatch(getTeamAction(team.data));
       } else {
+        dispatch(setErrorAction());
         console.log(teamErr);
-        alert('Сталася помилка');
       }
     });
   };

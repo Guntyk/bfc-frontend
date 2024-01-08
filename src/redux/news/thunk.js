@@ -1,5 +1,5 @@
 import { getNewsFetch } from 'api/requests';
-import { getNewsAction } from 'redux/news/actionCreators';
+import { getNewsAction, setErrorAction } from 'redux/news/actionCreators';
 
 export function getNews() {
   return (dispatch) => {
@@ -7,8 +7,8 @@ export function getNews() {
       if (news) {
         dispatch(getNewsAction(news.data.reverse()));
       } else {
+        dispatch(setErrorAction());
         console.log(newsErr);
-        alert('Сталася помилка');
       }
     });
   };

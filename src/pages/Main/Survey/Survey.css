@@ -89,6 +89,6 @@
 }
 
 .error {
-  color: rgb(216, 35, 35);
+  color: var(--red);
   margin-bottom: 0.5rem;
 }

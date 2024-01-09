@@ -21,10 +21,6 @@ export default function News() {
     }
   }, []);
 
-  useEffect(() => {
-    console.log(news);
-  }, [news]);
-
   return (
     <div className='news' id='news'>
       <div className='container'>
@@ -52,6 +48,7 @@ export default function News() {
                   onClick={() => {
                     push(`/news/${id}`);
                   }}
+                  key={id}
                 >
                   <div className='news-data-wrapper text-xs'>
                     <span>{formatDateToLocalFormat(publishedAt)}</span>

@@ -1,4 +1,5 @@
 import { Link } from 'react-router-dom';
+import { useId } from 'react';
 import { formatPhoneNumber } from 'helpers/formatPhoneNumber';
 import { contacts } from 'constants/contacts';
 import { links } from 'constants/links';
@@ -6,6 +7,8 @@ import logo from 'icons/logo.svg';
 import 'components/Footer/Footer.css';
 
 export default function Footer() {
+  const id = useId();
+
   return (
     <div className='container'>
       <footer className='footer'>
@@ -40,10 +43,10 @@ export default function Footer() {
           <div className='arrow' />
         </button>
         <div className='contacts'>
-          {Object.entries(contacts).map(([contact, value]) => {
+          {Object.entries(contacts).map(([contact, value], index) => {
             if (contact === 'phone') {
               return (
-                <div className='contact phone'>
+                <div className='contact phone' key={`${id}-${index}`}>
                   <span className='title'>Номер телефону</span>
                   <a className='title-l underline' href={`tel:${value}`} rel='noreferrer noopener'>
                     {formatPhoneNumber(value)}
@@ -52,7 +55,7 @@ export default function Footer() {
               );
             } else if (contact === 'email') {
               return (
-                <div className='contact email'>
+                <div className='contact email' key={`${id}-${index}`}>
                   <span className='title'>Електронна пошта</span>
                   <a className='title-l underline' href={`mailto:${value}`} target='_blank' rel='noreferrer noopener'>
                     {value}

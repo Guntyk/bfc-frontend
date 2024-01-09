@@ -38,7 +38,7 @@ export default function NewsDetails() {
         {currentNews ? (
           <>
             <div className='news-details'>
-              <img src={`http://localhost:1337${currentNews.cover.data.attributes.url}`} alt='news cover' className='news-cover' />
+              <img src={`${backendURL}${currentNews.cover.data.attributes.url}`} alt='news cover' className='news-cover' />
               {currentNews.cover_description && <p className='img-description text-s'>{currentNews.cover_description}</p>}
               <div className='news-data-wrapper text-xs'>
                 <span>{formatDateToLocalFormat(currentNews.publishedAt)}</span>

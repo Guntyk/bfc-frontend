@@ -5,6 +5,7 @@ import { newsSelector } from 'redux/news/selectors';
 import { getNews } from 'redux/news/thunk';
 import { formatDateToLocalFormat } from 'helpers/formatDateToLocalFormat';
 import Loader from 'components/Loader/Loader';
+import { backendURL } from 'constants/backendURL';
 import 'pages/Main/News/News.css';
 
 export default function News() {
@@ -56,7 +57,7 @@ export default function News() {
                     <span>{formatDateToLocalFormat(publishedAt)}</span>
                     <span className='views'>{views}</span>
                   </div>
-                  <img src={`http://localhost:1337${url}`} alt='news cover' />
+                  <img src={`${backendURL}${url}`} alt='news cover' />
                   <p className='text'>{title}</p>
                 </li>
               ),

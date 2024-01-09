@@ -49,6 +49,7 @@ export default function News() {
                       onClick={() => {
                         push(`/news/${id}`);
                       }}
+                      key={id}
                     >
                       <div className='news-data-wrapper text-xs'>
                         <span>{formatDateToLocalFormat(publishedAt)}</span>

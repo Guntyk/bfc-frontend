@@ -1,5 +1,6 @@
 import { useEffect, useState } from 'react';
 import Paragraph from 'components/RichContent/Types/Paragraph';
+import { yesNoOptions } from 'constants/yesNoOptions';
 
 export default function SurveyForm({ id, yes_no_options, options }) {
   const [confirmedOption, setConfirmedOption] = useState(null);
@@ -27,40 +28,30 @@ export default function SurveyForm({ id, yes_no_options, options }) {
     <div className='survey-form'>
       <span className='title-s choose-option-title'>Оберіть відповідь</span>
       <div className='options'>
-        {yes_no_options ? (
-          <>
-            <button
-              className={selectedOption === 'Так, підтримую' ? 'active' : ''}
-              onClick={() => {
-                setSelectedOption('Так, підтримую');
-              }}
-            >
-              Так, підтримую
-            </button>
-            <button
-              className={selectedOption === 'Ні, не підтримую' ? 'active' : ''}
-              onClick={() => {
-                setSelectedOption('Ні, не підтримую');
-              }}
-            >
-              Ні, не підтримую
-            </button>
-          </>
-        ) : (
-          options.map(({ children }) => {
-            return (
+        {yes_no_options
+          ? yesNoOptions.map((option) => (
               <button
-                className={selectedOption === children[0].text ? 'active' : ''}
-                key={children[0].text}
+                className={selectedOption === option ? 'active' : ''}
                 onClick={() => {
-                  setSelectedOption(children[0].text);
+                  setSelectedOption(option);
                 }}
               >
-                <Paragraph children={children} />
+                {option}
               </button>
-            );
-          })
-        )}
+            ))
+          : options.map(({ children }) => {
+              return (
+                <button
+                  className={selectedOption === children[0].text ? 'active' : ''}
+                  key={children[0].text}
+                  onClick={() => {
+                    setSelectedOption(children[0].text);
+                  }}
+                >
+                  <Paragraph children={children} />
+                </button>
+              );
+            })}
       </div>
       {error && <p className='error text-xs'>Ви не вибрали жодної відповіді</p>}
       <button className='gray-btn' onClick={handleClick}>

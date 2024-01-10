@@ -27,8 +27,8 @@ export default function Header() {
           <nav>
             <ul className='nav-links'>
               {surveys.length > 0
-                ? links.map(({ id, name, link }) => (
-                    <li className='nav-link' key={id}>
+                ? links.map(({ id, name, link, rounded }) => (
+                    <li className={`nav-link ${rounded ? 'rounded' : ''}`} key={id}>
                       <a href={link}>{name}</a>
                     </li>
                   ))

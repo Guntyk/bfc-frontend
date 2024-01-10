@@ -1,19 +1,36 @@
 import { Link } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
-import { useEffect } from 'react';
+import { useHistory } from 'react-router-dom';
+import { useEffect, useState } from 'react';
+import { formatPhoneNumber } from 'helpers/formatPhoneNumber';
 import { surveysSelector } from 'redux/surveys/selectors';
 import { getSurveys } from 'redux/surveys/thunk';
+import { getContactsFetch } from 'api/requests';
 import { links } from 'constants/links';
 import logo from 'icons/logo.svg';
 import 'components/Header/Header.css';
+import Loader from 'components/Loader/Loader';
 
 export default function Header() {
   const surveys = useSelector(surveysSelector);
+  const [contacts, setContacts] = useState({});
   const dispatch = useDispatch();
+  const { push } = useHistory();
 
   useEffect(() => {
     if (surveys.length === 0) {
       dispatch(getSurveys());
+    }
+
+    if (Object.keys(contacts).length === 0) {
+      getContactsFetch().then(([getErr, contacts]) => {
+        if (contacts) {
+          setContacts(contacts.data.attributes);
+        } else {
+          push('/error');
+          console.log(getErr);
+        }
+      });
     }
   }, []);
 
@@ -41,9 +58,13 @@ export default function Header() {
                     ))}
             </ul>
           </nav>
-          <a href='tel:380960082206' className='contact-phone'>
-            +380 (96) 008-22-06
-          </a>
+          {contacts?.phone ? (
+            <a href={`tel:${contacts.phone}`} className='contact-phone'>
+              {formatPhoneNumber(contacts.phone)}
+            </a>
+          ) : (
+            <Loader className='header-loader' />
+          )}
         </div>
       </header>
     </div>

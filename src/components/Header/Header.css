@@ -38,3 +38,8 @@
   border: 0.1rem solid var(--black);
   border-radius: 2rem;
 }
+
+.header-loader {
+  margin: 0;
+  justify-content: end;
+}

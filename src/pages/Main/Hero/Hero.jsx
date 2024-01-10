@@ -13,7 +13,6 @@ export default function Hero() {
     if (!content) {
       getFirstBlockFetch().then(([getErr, content]) => {
         if (content) {
-          console.log(content.data.attributes);
           setContent(content.data.attributes);
         } else {
           push('/error');

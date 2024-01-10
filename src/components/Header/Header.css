@@ -43,3 +43,19 @@
   margin: 0;
   justify-content: end;
 }
+
+@media (max-width: 1280px) {
+  .logo {
+    width: 6.0221rem;
+    height: 6.1919rem;
+  }
+
+  .nav-links {
+    margin-left: 3.378rem;
+    gap: 3.8rem;
+  }
+
+  .contact-phone {
+    padding: 1rem;
+  }
+}

@@ -12,6 +12,30 @@
   overflow-y: hidden;
 }
 
+.team::after {
+  content: '';
+  position: absolute;
+  top: 79.95%;
+  left: 50%;
+  width: 77rem;
+  height: 0.1rem;
+  background: var(--black);
+  transform: translateX(-50%);
+  z-index: -1;
+}
+
+.team-list::-webkit-scrollbar {
+  height: 1.4rem;
+}
+.team-list::-webkit-scrollbar-thumb {
+  border: 0.1rem solid var(--dark-gray);
+  background: var(--light-blue);
+  border-radius: 2rem;
+}
+.team-list::-webkit-scrollbar-track {
+  margin: 0 24.5rem;
+}
+
 .person-card {
   max-width: 22rem;
   background: #fff;

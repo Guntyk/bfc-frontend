@@ -23,7 +23,7 @@ export default function News() {
   }, []);
 
   return (
-    <section className='news'>
+    <section className='news' id='news'>
       <div className='container'>
         <h2 className='title underline'>Останні новини</h2>
       </div>

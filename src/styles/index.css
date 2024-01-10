@@ -25,6 +25,20 @@
 body {
   color: var(--black);
   font-weight: 300;
+  scrollbar-gutter: stable;
+}
+
+*::-webkit-scrollbar {
+  width: 1.4rem;
+}
+
+*::-webkit-scrollbar-thumb {
+  border: 0.1rem solid var(--dark-gray);
+  background: var(--light-blue);
+  border-radius: 2rem;
+}
+*::-webkit-scrollbar-track {
+  background: transparent;
 }
 
 .container {

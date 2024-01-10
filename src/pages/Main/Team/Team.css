@@ -32,7 +32,7 @@
 }
 
 .person-card .read-bio {
-  margin-top: 0.8rem;
+  margin-top: 1rem;
 }
 
 .team-background {
@@ -90,6 +90,7 @@
     margin-left: -3rem;
     padding-left: 3rem;
     max-height: 9.4rem;
+    max-height: 8.85rem;
     overflow: hidden;
   }
 

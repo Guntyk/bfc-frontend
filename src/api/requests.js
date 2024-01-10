@@ -12,7 +12,7 @@ backendApi.interceptors.response.use(
 
 export const getNewsFetch = () => backendApi.get('/news?populate=*&sort=publishedAt');
 export const increaseNewsViewsFetch = (id, views) =>
-  backendApi.put(`/news/${id}`, {
+  backendApi.put(`/news/${id}?populate=*`, {
     data: { views },
     headers: {
       'Content-Type': 'application/json',

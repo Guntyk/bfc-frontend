@@ -7,7 +7,7 @@ import { formatDateToLocalFormat } from 'helpers/formatDateToLocalFormat';
 import Loader from 'components/Loader/Loader';
 import { backendURL } from 'constants/backendURL';
 import background from 'images/background-3.svg';
-import error from 'icons/error.svg';
+import placeholder from 'icons/image-placeholder.svg';
 import 'pages/News/News.css';
 
 export default function News() {
@@ -59,7 +59,7 @@ export default function News() {
                           <img src={`${backendURL}${data.attributes.url}`} alt='news cover' />
                         ) : (
                           <div className='image-placeholder'>
-                            <img src={error} alt='error' />
+                            <img src={placeholder} alt='placeholder' />
                           </div>
                         )}
                         <p className='text'>{title}</p>

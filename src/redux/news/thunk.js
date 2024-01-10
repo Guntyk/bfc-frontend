@@ -1,5 +1,5 @@
-import { getNewsFetch } from 'api/requests';
-import { getNewsAction, setErrorAction } from 'redux/news/actionCreators';
+import { getNewsFetch, increaseNewsViewsFetch } from 'api/requests';
+import { getNewsAction, increaseViewsAction, setErrorAction } from 'redux/news/actionCreators';
 
 export function getNews() {
   return (dispatch) => {
@@ -9,6 +9,19 @@ export function getNews() {
       } else {
         dispatch(setErrorAction());
         console.log(newsErr);
+      }
+    });
+  };
+}
+
+export function increaseNewsViews(id, { views }) {
+  return (dispatch) => {
+    increaseNewsViewsFetch(id, Number(views) + 1).then(([increaseErr, updatedNewsObj]) => {
+      if (updatedNewsObj) {
+        dispatch(increaseViewsAction(updatedNewsObj?.data));
+      } else {
+        dispatch(setErrorAction());
+        console.log(increaseErr);
       }
     });
   };

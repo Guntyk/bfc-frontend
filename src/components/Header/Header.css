@@ -27,7 +27,7 @@
   padding: 1rem;
 }
 
-.nav-link:nth-child(3) a {
+.nav-link.rounded a {
   padding: 0.3rem 1rem;
   border: 0.1rem solid var(--yellow);
   border-radius: 2rem;

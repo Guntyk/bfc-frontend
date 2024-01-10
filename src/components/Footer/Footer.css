@@ -20,7 +20,7 @@
   max-height: 20rem;
 }
 
-.nav-link:nth-child(3) a {
+.nav-link.rounded a {
   margin-left: -1.1rem;
 }
 

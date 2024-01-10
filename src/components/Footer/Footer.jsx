@@ -1,5 +1,8 @@
 import { Link } from 'react-router-dom';
-import { useId } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
+import { useEffect, useId } from 'react';
+import { surveysSelector } from 'redux/surveys/selectors';
+import { getSurveys } from 'redux/surveys/thunk';
 import { formatPhoneNumber } from 'helpers/formatPhoneNumber';
 import { contacts } from 'constants/contacts';
 import { links } from 'constants/links';
@@ -8,6 +11,15 @@ import 'components/Footer/Footer.css';
 
 export default function Footer() {
   const id = useId();
+
+  const surveys = useSelector(surveysSelector);
+  const dispatch = useDispatch();
+
+  useEffect(() => {
+    if (surveys.length === 0) {
+      dispatch(getSurveys());
+    }
+  }, []);
 
   return (
     <div className='container'>
@@ -18,11 +30,19 @@ export default function Footer() {
           </a>
           <nav>
             <ul>
-              {links.map(({ id, name, link }) => (
-                <li className='nav-link text-s' key={id}>
-                  <a href={link}>{name}</a>
-                </li>
-              ))}
+              {surveys.length > 0
+                ? links.map(({ id, name, link, rounded }) => (
+                    <li className={`nav-link text-s ${rounded ? 'rounded' : ''}`} key={id}>
+                      <a href={link}>{name}</a>
+                    </li>
+                  ))
+                : links
+                    .filter((link) => link.id !== 3)
+                    .map(({ id, name, link }) => (
+                      <li className='nav-link text-s' key={id}>
+                        <a href={link}>{name}</a>
+                      </li>
+                    ))}
               <li className='nav-link text-s'>
                 <Link to='/news'>Архів новин</Link>
               </li>

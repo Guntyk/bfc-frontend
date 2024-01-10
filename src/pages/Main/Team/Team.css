@@ -12,7 +12,7 @@
   overflow-y: hidden;
 }
 
-.team::after {
+.team.fulfilled::after {
   content: '';
   position: absolute;
   top: 79.95%;

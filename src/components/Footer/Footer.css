@@ -60,3 +60,38 @@
 .footer .contacts {
   justify-self: end;
 }
+
+@media (max-width: 1280px) {
+  .footer {
+    display: flex;
+    justify-content: space-between;
+    padding: 5rem 0 7.8rem;
+  }
+
+  .footer img {
+    width: 6.0221rem;
+    height: 6.1919rem;
+  }
+
+  .footer ul {
+    row-gap: 2.4rem;
+    column-gap: 1.2rem;
+  }
+
+  .navigation-links {
+    gap: 3.37rem;
+  }
+
+  .scroll-up-btn {
+    display: none;
+  }
+
+  .footer .contacts,
+  .footer .contact {
+    align-items: center;
+  }
+
+  .footer .contacts {
+    gap: 4rem;
+  }
+}

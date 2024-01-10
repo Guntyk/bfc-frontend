@@ -22,7 +22,7 @@ export default function News() {
   }, []);
 
   return (
-    <div className='news' id='news'>
+    <section className='news'>
       <div className='container'>
         <h2 className='title underline'>Останні новини</h2>
       </div>
@@ -76,6 +76,6 @@ export default function News() {
           Більше новин
         </button>
       )}
-    </div>
+    </section>
   );
 }

@@ -1,0 +1,33 @@
+.not-found {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 3rem;
+  position: relative;
+  height: 100vh;
+}
+
+.not-found::before {
+  content: '404';
+  position: absolute;
+  top: 52.5%;
+  font-family: 'Kharkiv';
+  font-size: 40rem;
+  opacity: 0.05;
+  z-index: -1;
+  transform: translateY(-50%);
+}
+
+.not-found .underline {
+  position: relative;
+}
+.not-found .underline::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 0.2rem;
+  background: var(--blue);
+}

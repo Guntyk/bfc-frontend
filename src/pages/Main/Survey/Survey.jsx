@@ -1,5 +1,5 @@
-import { useDispatch, useSelector } from 'react-redux';
 import { Redirect } from 'react-router-dom';
+import { useDispatch, useSelector } from 'react-redux';
 import { useEffect, useState } from 'react';
 import { surveysSelector } from 'redux/surveys/selectors';
 import { getSurveys } from 'redux/surveys/thunk';
@@ -20,7 +20,7 @@ export default function Survey() {
   }, []);
 
   return surveys.length > 0 ? (
-    <section className='surveys' id='survey'>
+    <section className='surveys'>
       <div className='container'>
         <h2 className='title underline'>Опитування</h2>
       </div>

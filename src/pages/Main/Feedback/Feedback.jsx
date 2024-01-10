@@ -2,6 +2,7 @@ import { useId } from 'react';
 import { formatPhoneNumber } from 'helpers/formatPhoneNumber';
 import FeedbackForm from 'pages/Main/Feedback/FeedbackForm';
 import { contacts } from 'constants/contacts';
+import feedbackBackground from 'images/background-2.svg';
 import 'pages/Main/Feedback/Feedback.css';
 
 export default function Feedback() {
@@ -46,6 +47,7 @@ export default function Feedback() {
           <FeedbackForm />
         </div>
       </div>
+      <img className='feedback-background' src={feedbackBackground} alt='Background' />
     </section>
   );
 }

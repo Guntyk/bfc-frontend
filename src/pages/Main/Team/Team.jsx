@@ -7,6 +7,7 @@ import RichContent from 'components/RichContent/RichContent';
 import Loader from 'components/Loader/Loader';
 import Modal from 'components/Modal/Modal';
 import { backendURL } from 'constants/backendURL';
+import teamBackground from 'images/background-1.svg';
 import 'pages/Main/Team/Team.css';
 
 export default function Team() {
@@ -28,6 +29,7 @@ export default function Team() {
 
   return (
     <section className='team' id='team'>
+      <img className='team-background' src={teamBackground} alt='background' />
       <div className='container'>
         <h2 className='title underline'>Команда</h2>
       </div>

@@ -1,3 +1,9 @@
+.feedback {
+  position: relative;
+  margin-top: 7.2rem;
+  padding: 0;
+}
+
 .feedback-wrapper {
   display: flex;
   justify-content: space-between;
@@ -69,4 +75,13 @@
 
 .feedback-form .name-input {
   flex-shrink: 1.3;
+}
+
+.feedback-background {
+  position: absolute;
+  top: -136%;
+  left: -19.5%;
+  width: 152.2rem;
+  height: 150.91rem;
+  z-index: -1;
 }

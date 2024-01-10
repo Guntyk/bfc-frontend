@@ -1,3 +1,16 @@
+.news-archive-background {
+  position: relative;
+  background: radial-gradient(50% 50% at 50% 50%, rgba(119, 182, 255, 0.3) 0%, rgba(211, 231, 255, 0.3) 100%);
+  overflow: hidden;
+}
+
+.news-archive-background-image {
+  position: absolute;
+  top: 2%;
+  right: -5%;
+  z-index: -1;
+}
+
 .news-archive {
   padding: 7.3rem 0 11.7rem;
   scroll-behavior: unset;

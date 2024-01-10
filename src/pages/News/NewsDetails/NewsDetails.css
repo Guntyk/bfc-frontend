@@ -1,3 +1,16 @@
+.detail-page-background {
+  position: relative;
+  background: radial-gradient(50% 50% at 50% 50%, rgba(119, 182, 255, 0.3) 0%, rgba(211, 231, 255, 0.3) 100%);
+  overflow: hidden;
+}
+
+.details-background-image {
+  position: absolute;
+  top: 2%;
+  right: -5%;
+  z-index: -1;
+}
+
 .detail-page {
   display: flex;
   gap: 2.5rem;

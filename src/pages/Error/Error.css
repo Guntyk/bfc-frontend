@@ -13,7 +13,6 @@
   content: '';
   position: absolute;
   top: 40%;
-  /* left: 30%; */
   width: 3vw;
   aspect-ratio: 1/1;
   background: url(icons/error.svg) no-repeat;

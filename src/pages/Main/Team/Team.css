@@ -1,4 +1,5 @@
 .team {
+  position: relative;
   margin: 0 auto;
   padding: 7rem 0 10rem;
 }
@@ -13,6 +14,7 @@
 
 .person-card {
   max-width: 22rem;
+  background: #fff;
 }
 
 .person-card .role {
@@ -31,6 +33,15 @@
 
 .person-card .read-bio {
   margin-top: 0.8rem;
+}
+
+.team-background {
+  position: absolute;
+  top: -15%;
+  right: -15%;
+  width: 165rem;
+  height: 155rem;
+  z-index: -1;
 }
 
 @media (min-width: 768px) {

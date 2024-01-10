@@ -1,5 +1,6 @@
 import { Switch, Route, useLocation } from 'react-router-dom';
 import NewsDetails from 'pages/News/NewsDetails/NewsDetails';
+import NotFound from 'pages/NotFound/NotFound';
 import Error from 'pages/Error/Error';
 import Main from 'pages/Main/Main';
 import News from 'pages/News/News';
@@ -8,10 +9,11 @@ import Header from 'components/Header/Header';
 
 export default function App() {
   const { pathname } = useLocation();
+  const allowComponentsPathnames = ['/', '/news'];
 
   return (
     <>
-      {pathname !== '/error' && <Header />}
+      {allowComponentsPathnames.includes(pathname) && <Header />}
       <Switch>
         <Route exact path='/'>
           <Main />
@@ -25,8 +27,11 @@ export default function App() {
         <Route exact path='/error'>
           <Error />
         </Route>
+        <Route>
+          <NotFound />
+        </Route>
       </Switch>
-      {pathname !== '/error' && <Footer />}
+      {allowComponentsPathnames.includes(pathname) && <Footer />}
     </>
   );
 }

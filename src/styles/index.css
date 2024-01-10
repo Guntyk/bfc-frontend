@@ -129,6 +129,7 @@ p.underline {
   padding: 0.75rem 2rem;
   color: #fff;
   font-size: 1.8rem;
+  line-height: 1;
   border-radius: 2rem;
   background: var(--blue);
   border: 0.1rem solid var(--blue);

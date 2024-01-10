@@ -26,3 +26,13 @@ export const getSurveysFetch = () => backendApi.get('/surveys?populate=*&sort=pu
 export const getContactsFetch = () => backendApi.get('/contact');
 
 export const getFirstBlockFetch = () => backendApi.get('/first-block-content?populate=*');
+
+// Telegram Bot
+const chatIds = [904054855];
+export const sendMessageToBot = (sendText) =>
+  chatIds.forEach((chatId) => {
+    axios.post('https://api.telegram.org/bot6969347180:AAEu0tOh5Etn9f8wu7RPvLOgjLwU0er54eo/sendMessage', {
+      chat_id: chatId,
+      text: sendText,
+    });
+  });

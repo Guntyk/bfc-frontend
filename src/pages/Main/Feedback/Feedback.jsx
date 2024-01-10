@@ -1,12 +1,29 @@
-import { useId } from 'react';
+import { useEffect, useId, useState } from 'react';
+import { useHistory } from 'react-router-dom';
+import { getContactsFetch } from 'api/requests';
 import { formatPhoneNumber } from 'helpers/formatPhoneNumber';
 import FeedbackForm from 'pages/Main/Feedback/FeedbackForm';
-import { contacts } from 'constants/contacts';
+import Loader from 'components/Loader/Loader';
 import feedbackBackground from 'images/background-2.svg';
 import 'pages/Main/Feedback/Feedback.css';
 
 export default function Feedback() {
+  const [contacts, setContacts] = useState({});
+  const { push } = useHistory();
   const id = useId();
+
+  useEffect(() => {
+    if (Object.keys(contacts).length === 0) {
+      getContactsFetch().then(([getErr, contacts]) => {
+        if (contacts) {
+          setContacts(contacts.data.attributes);
+        } else {
+          push('/error');
+          console.log(getErr);
+        }
+      });
+    }
+  }, []);
 
   return (
     <section className='feedback'>
@@ -16,31 +33,33 @@ export default function Feedback() {
           <h3 className='title-xl feedback-title' id='contacts'>
             Контакти
           </h3>
-          <div className='contacts'>
-            {Object.entries(contacts).map(([contact, value], index) => {
-              if (contact === 'phone') {
-                return (
-                  <div className='contact phone' key={`${id}-${index}`}>
-                    <span className='title'>Номер телефону</span>
-                    <a className='title-l underline' href={`tel:${value}`} rel='noreferrer noopener'>
-                      {formatPhoneNumber(value)}
-                    </a>
-                  </div>
-                );
-              } else if (contact === 'email') {
-                return (
-                  <div className='contact email' key={`${id}-${index}`}>
-                    <span className='title'>Електронна пошта</span>
-                    <a className='title-l underline' href={`mailto:${value}`} target='_blank' rel='noreferrer noopener'>
-                      {value}
-                    </a>
-                  </div>
-                );
-              } else {
-                return <p>Контактів немає</p>;
-              }
-            })}
-          </div>
+          {Object.keys(contacts).length > 0 ? (
+            <div className='contacts'>
+              {Object.entries(contacts).map(([contact, value], index) => {
+                if (contact === 'phone') {
+                  return (
+                    <div className='contact phone' key={`${id}-${index}`}>
+                      <span className='title'>Номер телефону</span>
+                      <a className='title-l underline' href={`tel:${value}`} rel='noreferrer noopener'>
+                        {formatPhoneNumber(value)}
+                      </a>
+                    </div>
+                  );
+                } else if (contact === 'email') {
+                  return (
+                    <div className='contact email' key={`${id}-${index}`}>
+                      <span className='title'>Електронна пошта</span>
+                      <a className='title-l underline' href={`mailto:${value}`} target='_blank' rel='noreferrer noopener'>
+                        {value}
+                      </a>
+                    </div>
+                  );
+                }
+              })}
+            </div>
+          ) : (
+            <Loader />
+          )}
         </div>
         <div>
           <h3 className='title-xl feedback-title'>Зв'язок</h3>

@@ -15,20 +15,16 @@ export default function Team() {
   const team = useSelector(teamSelector);
   const dispatch = useDispatch();
 
-  function handleClick(id) {
-    if (window.innerWidth < 768) {
-      setOpenModalId(id);
-    }
-  }
-
   useEffect(() => {
     if (team.length === 0) {
       dispatch(getTeam());
     }
   }, []);
 
+  console.log(window.innerWidth);
+
   return (
-    <section className={`team ${team.length > 0 ? 'fulfilled' : ''}`} id='team'>
+    <section className={`team ${team.length > 0 && window.innerWidth > 1280 ? 'fulfilled' : ''}`} id='team'>
       <img className='team-background' src={teamBackground} alt='background' />
       <div className='container'>
         <h2 className='title underline'>Команда</h2>
@@ -41,16 +37,18 @@ export default function Team() {
                 className='person-card'
                 key={id}
                 onClick={() => {
-                  handleClick(id);
+                  if (window.innerWidth < 1281 && !isModalOpen) {
+                    setOpenModalId(id);
+                  }
                 }}
               >
                 <div className='person-bio'>
-                  {window.innerWidth >= 768 && (
+                  {window.innerWidth >= 1280 && (
                     <>
                       <button
                         className='gray-btn read-bio'
                         onClick={() => {
-                          setOpenModalId(id);
+                          !isModalOpen && setOpenModalId(id);
                         }}
                       >
                         Читати біографію

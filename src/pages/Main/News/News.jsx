@@ -6,6 +6,7 @@ import { getNews } from 'redux/news/thunk';
 import { formatDateToLocalFormat } from 'helpers/formatDateToLocalFormat';
 import Loader from 'components/Loader/Loader';
 import { backendURL } from 'constants/backendURL';
+import placeholder from 'icons/image-placeholder.svg';
 import 'pages/Main/News/News.css';
 
 export default function News() {
@@ -36,11 +37,7 @@ export default function News() {
                   title,
                   views,
                   publishedAt,
-                  cover: {
-                    data: {
-                      attributes: { url },
-                    },
-                  },
+                  cover: { data },
                 },
               }) => (
                 <li
@@ -54,7 +51,13 @@ export default function News() {
                     <span>{formatDateToLocalFormat(publishedAt)}</span>
                     <span className='views'>{views}</span>
                   </div>
-                  <img src={`${backendURL}${url}`} alt='news cover' />
+                  {data?.attributes ? (
+                    <img src={`${backendURL}${data.attributes.url}`} alt='news cover' />
+                  ) : (
+                    <div className='image-placeholder'>
+                      <img src={placeholder} alt='placeholder' />
+                    </div>
+                  )}
                   <p className='text'>{title}</p>
                 </li>
               ),

@@ -7,6 +7,7 @@ import { formatDateToLocalFormat } from 'helpers/formatDateToLocalFormat';
 import Loader from 'components/Loader/Loader';
 import { backendURL } from 'constants/backendURL';
 import background from 'images/background-3.svg';
+import error from 'icons/error.svg';
 import 'pages/News/News.css';
 
 export default function News() {
@@ -40,11 +41,7 @@ export default function News() {
                         title,
                         views,
                         publishedAt,
-                        cover: {
-                          data: {
-                            attributes: { url },
-                          },
-                        },
+                        cover: { data },
                       },
                     }) => (
                       <div
@@ -58,7 +55,13 @@ export default function News() {
                           <span>{formatDateToLocalFormat(publishedAt)}</span>
                           <span className='views'>{views}</span>
                         </div>
-                        <img src={`${backendURL}${url}`} alt='news cover' />
+                        {data?.attributes ? (
+                          <img src={`${backendURL}${data.attributes.url}`} alt='news cover' />
+                        ) : (
+                          <div className='image-placeholder'>
+                            <img src={error} alt='error' />
+                          </div>
+                        )}
                         <p className='text'>{title}</p>
                       </div>
                     ),

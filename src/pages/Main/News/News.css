@@ -18,18 +18,30 @@
   max-width: 22rem;
   cursor: pointer;
   transition: 0.2s;
+  line-height: 1.15;
 }
 
 .news-card:hover {
   transform: translateY(-0.2rem);
 }
 
-.news-card img {
+.image-placeholder,
+.news-card > img {
   margin: 0.5rem 0 1rem;
   width: 100%;
   aspect-ratio: 1/1;
   object-fit: cover;
   border-radius: 2rem;
+}
+.image-placeholder {
+  display: grid;
+  place-items: center;
+  box-shadow: 0 0.4rem 0.72rem 0 rgba(14, 67, 117, 0.1);
+  backdrop-filter: blur(0.2rem);
+  background: rgba(255, 255, 255, 0.1);
+}
+.image-placeholder img {
+  width: 25%;
 }
 
 .news-data-wrapper {

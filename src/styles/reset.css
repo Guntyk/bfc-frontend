@@ -216,3 +216,7 @@ iframe {
 [hidden] {
   display: none !important;
 }
+
+hr {
+  border: none;
+}

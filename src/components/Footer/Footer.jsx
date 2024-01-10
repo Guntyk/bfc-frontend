@@ -1,19 +1,35 @@
 import { Link } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
-import { useEffect, useId } from 'react';
+import { useEffect, useId, useState } from 'react';
+import { useHistory } from 'react-router-dom';
 import { surveysSelector } from 'redux/surveys/selectors';
 import { getSurveys } from 'redux/surveys/thunk';
+import { getContactsFetch } from 'api/requests';
 import { formatPhoneNumber } from 'helpers/formatPhoneNumber';
-import { contacts } from 'constants/contacts';
+import Loader from 'components/Loader/Loader';
 import { links } from 'constants/links';
 import logo from 'icons/logo.svg';
 import 'components/Footer/Footer.css';
 
 export default function Footer() {
+  const surveys = useSelector(surveysSelector);
+  const [contacts, setContacts] = useState({});
+  const dispatch = useDispatch();
+  const { push } = useHistory();
   const id = useId();
 
-  const surveys = useSelector(surveysSelector);
-  const dispatch = useDispatch();
+  useEffect(() => {
+    if (Object.keys(contacts).length === 0) {
+      getContactsFetch().then(([getErr, contacts]) => {
+        if (contacts) {
+          setContacts(contacts.data.attributes);
+        } else {
+          push('/error');
+          console.log(getErr);
+        }
+      });
+    }
+  }, []);
 
   useEffect(() => {
     if (surveys.length === 0) {
@@ -62,31 +78,33 @@ export default function Footer() {
         >
           <div className='arrow' />
         </button>
-        <div className='contacts'>
-          {Object.entries(contacts).map(([contact, value], index) => {
-            if (contact === 'phone') {
-              return (
-                <div className='contact phone' key={`${id}-${index}`}>
-                  <span className='title'>Номер телефону</span>
-                  <a className='title-l underline' href={`tel:${value}`} rel='noreferrer noopener'>
-                    {formatPhoneNumber(value)}
-                  </a>
-                </div>
-              );
-            } else if (contact === 'email') {
-              return (
-                <div className='contact email' key={`${id}-${index}`}>
-                  <span className='title'>Електронна пошта</span>
-                  <a className='title-l underline' href={`mailto:${value}`} target='_blank' rel='noreferrer noopener'>
-                    {value}
-                  </a>
-                </div>
-              );
-            } else {
-              return <p>Контактів немає</p>;
-            }
-          })}
-        </div>
+        {Object.keys(contacts).length > 0 ? (
+          <div className='contacts'>
+            {Object.entries(contacts).map(([contact, value], index) => {
+              if (contact === 'phone') {
+                return (
+                  <div className='contact phone' key={`${id}-${index}`}>
+                    <span className='title'>Номер телефону</span>
+                    <a className='title-l underline' href={`tel:${value}`} rel='noreferrer noopener'>
+                      {formatPhoneNumber(value)}
+                    </a>
+                  </div>
+                );
+              } else if (contact === 'email') {
+                return (
+                  <div className='contact email' key={`${id}-${index}`}>
+                    <span className='title'>Електронна пошта</span>
+                    <a className='title-l underline' href={`mailto:${value}`} target='_blank' rel='noreferrer noopener'>
+                      {value}
+                    </a>
+                  </div>
+                );
+              }
+            })}
+          </div>
+        ) : (
+          <Loader />
+        )}
       </footer>
     </div>
   );

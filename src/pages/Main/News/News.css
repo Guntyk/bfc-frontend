@@ -6,8 +6,9 @@
 .news-list {
   display: flex;
   gap: 2.5rem;
-  overflow-y: hidden;
   padding: 0 4rem;
+  margin: 3.2rem 0 3.8rem;
+  overflow-y: hidden;
 }
 .news-list::-webkit-scrollbar {
   display: none;
@@ -51,10 +52,6 @@
   color: var(--dark-gray);
 }
 
-.news-list {
-  margin: 3.2rem 0 3.8rem;
-}
-
 .views {
   display: flex;
   align-items: center;
@@ -75,5 +72,12 @@
 @media (min-width: 768px) {
   .news {
     max-width: 128rem;
+  }
+}
+
+@media (max-width: 1280px) {
+  .news-list {
+    padding: 0 2rem;
+    margin: 3rem 0 4rem;
   }
 }

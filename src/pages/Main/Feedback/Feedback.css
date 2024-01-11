@@ -133,3 +133,34 @@
     margin-top: 1rem;
   }
 }
+
+@media (max-width: 768px) {
+  .feedback-wrapper {
+    margin: 5.1rem 0 6rem;
+  }
+  .feedback .contacts {
+    flex-direction: column;
+    gap: 2.9rem;
+    margin-bottom: 3.8rem;
+  }
+  .contact {
+    gap: 0.8rem;
+  }
+  .contact span {
+    font-size: 1.4rem;
+  }
+
+  .feedback-form .inputs-group {
+    display: block;
+  }
+  .feedback-form .inputs-group input:first-child {
+    margin-bottom: 1.5rem;
+  }
+
+  .feedback-background {
+    top: -47%;
+    left: -53%;
+    width: 95.2rem;
+    height: 93.91rem;
+  }
+}

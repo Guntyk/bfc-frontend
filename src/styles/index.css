@@ -52,6 +52,11 @@ body {
     padding: 0 2rem;
   }
 }
+@media (max-width: 768px) {
+  .container {
+    padding: 0 1.5rem;
+  }
+}
 
 button {
   transition: 0.15s;
@@ -129,6 +134,18 @@ p.underline {
   }
   .text-l {
     font-size: 1.6rem;
+  }
+}
+
+@media (max-width: 768px) {
+  .title-l {
+    font-size: 1.8rem;
+  }
+  .title {
+    font-size: 1.6rem;
+  }
+  .text {
+    font-size: 1.4rem;
   }
 }
 

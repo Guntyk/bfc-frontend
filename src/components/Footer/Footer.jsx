@@ -64,7 +64,7 @@ export default function Footer() {
               </li>
               <li className='nav-link text-s'>
                 <a href='https://bento.me/sate' target='_blank' rel='noreferrer noopener'>
-                  Sate: Design & Development
+                  Sate: {window.innerWidth <= 768 ? 'Web Dev' : 'Design & Development'}
                 </a>
               </li>
             </ul>

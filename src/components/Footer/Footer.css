@@ -103,10 +103,15 @@
     gap: 4.7rem;
   }
   .footer ul {
+    padding-left: 0;
+    padding-right: 0;
     row-gap: 2.4rem;
     column-gap: 1.5rem;
   }
   .footer .navigation-links {
     gap: 3.578rem;
+  }
+  .footer .contacts {
+    gap: 2.9rem;
   }
 }

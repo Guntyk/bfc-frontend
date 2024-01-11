@@ -59,3 +59,12 @@
     padding: 1rem;
   }
 }
+
+@media (max-width: 768px) {
+  .header nav {
+    display: none;
+  }
+  .header .contact-phone {
+    margin-left: auto;
+  }
+}

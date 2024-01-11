@@ -155,3 +155,28 @@
     display: none;
   }
 }
+
+@media (max-width: 768px) {
+  .team {
+    padding: 3.5rem 0 5.5rem;
+  }
+  .team-list {
+    margin-top: 2.5rem;
+    padding: 0 1.5rem;
+    gap: 2rem;
+  }
+  .person-card {
+    max-width: 16.5rem;
+    min-width: 16.5rem;
+    height: unset;
+  }
+  .person-card .role {
+    letter-spacing: 0.03rem;
+    margin-bottom: 0.4rem;
+  }
+  .person-card > img {
+    margin-top: 0.445rem;
+    margin-bottom: 0;
+    height: 22.0732rem;
+  }
+}

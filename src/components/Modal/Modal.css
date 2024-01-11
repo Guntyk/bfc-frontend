@@ -61,6 +61,10 @@
   .modal .heading {
     margin-bottom: 1rem;
   }
+  .modal .heading .title-l {
+    letter-spacing: 0.05rem;
+    line-height: 1.2;
+  }
   .modal .content::-webkit-scrollbar {
     display: none;
   }

@@ -52,3 +52,16 @@
 .modal .list {
   margin-left: 2rem;
 }
+
+@media (max-width: 768px) {
+  .modal {
+    padding: 1.5em;
+    max-height: 80vh;
+  }
+  .modal .heading {
+    margin-bottom: 1rem;
+  }
+  .modal .content::-webkit-scrollbar {
+    display: none;
+  }
+}

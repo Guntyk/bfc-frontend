@@ -118,3 +118,28 @@
     margin: 0.4rem 0 0 auto;
   }
 }
+
+@media (max-width: 768px) {
+  .surveys {
+    padding-top: 5.9rem;
+  }
+  .survey-background {
+    padding: 3.8rem 0 5.1rem;
+  }
+  .survey {
+    flex-direction: column-reverse;
+    gap: 4rem;
+  }
+  .survey > div {
+    max-width: 100%;
+  }
+  .survey-form {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+  .survey-form .options {
+    margin: 3.5em 0 2.5rem;
+    gap: 2rem;
+  }
+}

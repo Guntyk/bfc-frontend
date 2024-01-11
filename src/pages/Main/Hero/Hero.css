@@ -37,3 +37,21 @@
     margin: 1rem 0 3.3rem;
   }
 }
+
+@media (max-width: 768px) {
+  .hero {
+    padding: 5.7rem 1.5rem 4.6rem 1.5rem;
+  }
+  .hero .title-xl {
+    line-height: 1.2;
+  }
+  .hero .text-l {
+    margin: 0.9rem 0 2.5rem;
+    font-size: 1.4rem;
+    line-height: 1.25;
+  }
+  .activity {
+    padding: 0.6rem 1rem;
+    width: 100%;
+  }
+}

@@ -138,6 +138,7 @@ p.underline {
 }
 
 @media (max-width: 768px) {
+  .title-xl,
   .title-l {
     font-size: 1.8rem;
   }

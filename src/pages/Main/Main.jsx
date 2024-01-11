@@ -8,13 +8,13 @@ import 'pages/Main/Main.css';
 export default function Main() {
   return (
     <main className='main'>
-      {/* <Hero />
+      <Hero />
       <Team />
       <News />
       <Survey />
       <div className='container'>
         <Feedback />
-      </div> */}
+      </div>
     </main>
   );
 }

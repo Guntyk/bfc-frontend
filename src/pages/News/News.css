@@ -40,3 +40,21 @@
     margin: 3.5rem 0 6.5rem;
   }
 }
+
+@media (max-width: 768px) {
+  .news-archive {
+    padding: 4.5rem 0 8.8rem;
+  }
+  .news-archive-items {
+    margin: 2.5rem 0 4.5rem;
+    column-gap: 1.5rem;
+    row-gap: 3.795rem;
+  }
+  .news-archive .news-card {
+    max-width: 15.7rem;
+    min-width: 15.7rem;
+  }
+  .news-archive .news-card > img {
+    margin-bottom: 0.369rem;
+  }
+}

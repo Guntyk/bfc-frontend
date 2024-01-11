@@ -1,16 +1,15 @@
 import { useParams, useHistory } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 import { useEffect, useState } from 'react';
-import { getNewsAction } from 'redux/news/actionCreators';
 import { newsSelector } from 'redux/news/selectors';
 import { getNews, increaseNewsViews } from 'redux/news/thunk';
 import { formatDateToLocalFormat } from 'helpers/formatDateToLocalFormat';
-import { increaseNewsViewsFetch } from 'api/requests';
 import RichContent from 'components/RichContent/RichContent';
 import Footer from 'components/Footer/Footer';
 import Header from 'components/Header/Header';
 import Loader from 'components/Loader/Loader';
 import { backendURL } from 'constants/backendURL';
+import placeholder from 'icons/image-placeholder.svg';
 import background from 'images/background-3.svg';
 import 'pages/News/NewsDetails/NewsDetails.css';
 
@@ -102,7 +101,13 @@ export default function NewsDetails() {
                           push(`/news/${id}`);
                         }}
                       >
-                        {data?.attributes ? <img src={`${backendURL}${data.attributes.url}`} alt='' className='recommended-news-photo' /> : <hr />}
+                        {data?.attributes ? (
+                          <img src={`${backendURL}${data.attributes.url}`} alt='' className='recommended-news-photo' />
+                        ) : (
+                          <div className='image-placeholder'>
+                            <img src={placeholder} alt='placeholder' />
+                          </div>
+                        )}
                         <p className='text-s'>{title}</p>
                         <div className='news-data-wrapper text-xs'>
                           <span>{formatDateToLocalFormat(publishedAt)}</span>

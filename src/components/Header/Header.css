@@ -61,6 +61,13 @@
 }
 
 @media (max-width: 768px) {
+  .header {
+    padding: 2.8rem 0 2.1rem;
+  }
+  .logo {
+    width: 6.0221rem;
+    height: 6.1919rem;
+  }
   .header nav {
     display: none;
   }

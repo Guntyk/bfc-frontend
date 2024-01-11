@@ -65,7 +65,7 @@ export default function NewsDetails() {
       <Header />
       <div className='detail-page-background'>
         <img src={background} alt='background' className='details-background-image' />
-        <div className='container'>
+        <div className={window.innerWidth > 768 ? 'container' : ''}>
           <div className='detail-page'>
             {currentNews ? (
               <>
@@ -73,14 +73,16 @@ export default function NewsDetails() {
                   {currentNews?.cover?.data?.attributes && (
                     <img src={`${backendURL}${currentNews.cover.data.attributes.url}`} alt='news cover' className='news-cover' />
                   )}
-                  {currentNews.cover_description && <p className='img-description text-s'>{currentNews.cover_description}</p>}
-                  <div className='news-data-wrapper text-xs'>
-                    <span>{formatDateToLocalFormat(currentNews.publishedAt)}</span>
-                    <span className='views'>{currentNews.views}</span>
-                  </div>
-                  <h1 className='title-l'>{currentNews.title}</h1>
-                  <div className='news-content'>
-                    <RichContent content={currentNews.text} />
+                  <div className={window.innerWidth <= 768 ? 'container' : ''}>
+                    {currentNews.cover_description && <p className='img-description text-s'>{currentNews.cover_description}</p>}
+                    <div className='news-data-wrapper text-xs'>
+                      <span>{formatDateToLocalFormat(currentNews.publishedAt)}</span>
+                      <span className='views'>{currentNews.views}</span>
+                    </div>
+                    <h1 className='title-l'>{currentNews.title}</h1>
+                    <div className='news-content'>
+                      <RichContent content={currentNews.text} />
+                    </div>
                   </div>
                 </div>
                 <div className='recommended-news'>

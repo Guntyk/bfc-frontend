@@ -95,3 +95,18 @@
     gap: 4rem;
   }
 }
+
+@media (max-width: 768px) {
+  .footer {
+    padding: 4.5rem 0 3rem;
+    flex-direction: column;
+    gap: 4.7rem;
+  }
+  .footer ul {
+    row-gap: 2.4rem;
+    column-gap: 1.5rem;
+  }
+  .footer .navigation-links {
+    gap: 3.578rem;
+  }
+}

@@ -147,6 +147,9 @@ p.underline {
   .text {
     font-size: 1.4rem;
   }
+  .text-xs {
+    font-size: 1rem;
+  }
 }
 
 /* Buttons */
@@ -193,5 +196,11 @@ p.underline {
 @media (max-width: 1280px) {
   .blue-btn {
     padding: 0.75rem 1.5rem;
+  }
+}
+@media (max-width: 768px) {
+  .blue-btn {
+    padding: 0.57rem 1.3rem;
+    font-size: 1.6rem;
   }
 }

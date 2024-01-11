@@ -31,3 +31,13 @@
   height: 0.2rem;
   background: var(--blue);
 }
+
+@media (max-width: 1280px) {
+  .not-found {
+    gap: 1.5rem;
+  }
+
+  .not-found::before {
+    font-size: 30rem;
+  }
+}

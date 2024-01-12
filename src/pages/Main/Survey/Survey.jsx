@@ -28,14 +28,14 @@ export default function Survey() {
         <h2 className='title underline'>Опитування</h2>
       </div>
       {surveys[0] !== 'error' ? (
-        surveys.map(({ id, attributes: { yes_no_options, answers, description } }) => {
+        surveys.map(({ id, attributes: { answers, description } }) => {
           const textLength = description.flatMap((desc) => desc.children).reduce((totalLength, { text }) => totalLength + text.length, 0);
 
           return (
             <div className='survey-background' key={id}>
               <div className='container'>
                 <div className='survey'>
-                  <SurveyForm id={id} yes_no_options={yes_no_options} answers={answers} />
+                  <SurveyForm id={id} surveys={surveys} answers={answers} />
                   <div>
                     <div className={`survey-content ${safari ? 'safari' : ''}`}>
                       <RichContent content={description} />

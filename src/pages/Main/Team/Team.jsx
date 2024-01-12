@@ -21,8 +21,6 @@ export default function Team() {
     }
   }, []);
 
-  console.log(window.innerWidth);
-
   return (
     <section className={`team ${team.length > 0 && window.innerWidth > 1280 ? 'fulfilled' : ''}`} id='team'>
       <img className='team-background' src={teamBackground} alt='background' />

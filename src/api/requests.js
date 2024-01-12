@@ -22,6 +22,13 @@ export const increaseNewsViewsFetch = (id, views) =>
 export const getTeamFetch = () => backendApi.get('/people?populate=*');
 
 export const getSurveysFetch = () => backendApi.get('/surveys?populate=*&sort=publishedAt');
+export const voteFetch = (surveyId, answerToVote, otherAnswers) =>
+  backendApi.put(`/surveys/${surveyId}?populate=*`, {
+    data: { answers: [...otherAnswers, { ...answerToVote, responses: Number(answerToVote.responses) + 1 }].sort((a, b) => a.id - b.id) },
+    headers: {
+      'Content-Type': 'application/json',
+    },
+  });
 
 export const getContactsFetch = () => backendApi.get('/contact');
 

@@ -6,7 +6,6 @@ import 'components/RichContent/RichContent.css';
 
 export default function RichContent({ content }) {
   const id = useId();
-  console.log(content);
 
   return (
     content.length > 0 &&

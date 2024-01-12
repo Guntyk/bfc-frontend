@@ -52,12 +52,44 @@
 
 .options {
   display: flex;
-  flex-wrap: wrap;
-  gap: 1rem;
+  flex-direction: column;
+  gap: 3rem;
   margin: 2.5rem 0 4.5rem;
 }
 
-.options button {
+.options.voted {
+  pointer-events: none;
+}
+
+.options > div {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+.results {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  position: relative;
+  width: 100%;
+  margin-bottom: 1rem;
+}
+.progress-bar {
+  position: absolute;
+  bottom: -1.5rem;
+  width: 0;
+  min-width: 0.5rem;
+  height: 0.5rem;
+  background: var(--blue);
+  border-radius: 2rem;
+  transition: 0.5s;
+}
+.options span {
+  font-size: 1.4rem;
+}
+
+.option-btn {
+  width: 100%;
   padding: 0.6rem 1.4rem;
   color: var(--blue);
   font-size: 1.6rem;
@@ -65,15 +97,15 @@
   border-radius: 2rem;
   border: 0.1rem solid var(--blue);
 }
-.options button.active,
-.options button:hover {
+.option-btn.active,
+.option-btn:hover {
   color: #fff;
   background: var(--blue);
 }
-.options button:active {
+.option-btn:active {
   background: var(--dark-blue);
 }
-.options button.active {
+.option-btn.active {
   pointer-events: none;
 }
 

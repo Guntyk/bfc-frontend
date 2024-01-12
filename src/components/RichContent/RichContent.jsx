@@ -6,17 +6,18 @@ import 'components/RichContent/RichContent.css';
 
 export default function RichContent({ content }) {
   const id = useId();
+  console.log(content);
 
   return (
     content.length > 0 &&
-    content.map(({ type, children }, index) => {
+    content.map(({ type, children, format, image }, index) => {
       switch (type) {
         case 'paragraph':
           return <Paragraph children={children} key={`${id}-${index}`} />;
         case 'image':
-          return <Image key={`${id}-${index}`} />;
+          return <Image image={image} key={`${id}-${index}`} />;
         case 'list':
-          return <List children={children} key={`${id}-${index}`} />;
+          return <List children={children} format={format} key={`${id}-${index}`} />;
         case 'quote':
           return (
             <div className='quote' key={`${id}-${index}`}>

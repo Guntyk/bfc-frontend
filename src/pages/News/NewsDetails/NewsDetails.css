@@ -132,6 +132,9 @@
     padding: 1.5rem 0 4rem;
     gap: 4rem;
   }
+  .detail-page h1 {
+    line-height: 1.3;
+  }
   .news-cover {
     margin-top: -1.5rem;
     aspect-ratio: unset;
@@ -139,6 +142,7 @@
   .news-content {
     margin-top: 1.1rem;
     line-height: 1.4;
+    gap: 1.5rem;
   }
   .recommended-news {
     padding: 0 1.5rem;

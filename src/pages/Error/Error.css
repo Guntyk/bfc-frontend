@@ -53,3 +53,17 @@
     bottom: 53.5%;
   }
 }
+
+@media (max-width: 768px) {
+  .error-page .title-xl {
+    font-size: 2.6rem;
+  }
+  .error-page .text-l {
+    padding: 0 1rem;
+    font-size: 1.4rem;
+  }
+  .error-page::before {
+    bottom: 54%;
+    width: 3.5rem;
+  }
+}

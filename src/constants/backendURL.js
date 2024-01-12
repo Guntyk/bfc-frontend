@@ -1,1 +1,1 @@
-export const backendURL = 'http://localhost:1337';
+export const backendURL = 'https://smg-backend.onrender.com';

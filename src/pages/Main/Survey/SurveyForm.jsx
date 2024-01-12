@@ -1,8 +1,7 @@
 import { useEffect, useId, useState } from 'react';
-import Paragraph from 'components/RichContent/Types/Paragraph';
 import { yesNoOptions } from 'constants/yesNoOptions';
 
-export default function SurveyForm({ id, yes_no_options, options }) {
+export default function SurveyForm({ id, yes_no_options, answers }) {
   const [confirmedOption, setConfirmedOption] = useState(null);
   const [selectedOption, setSelectedOption] = useState(null);
   const [error, setError] = useState(false);
@@ -30,30 +29,28 @@ export default function SurveyForm({ id, yes_no_options, options }) {
       <span className='title-s choose-option-title'>Оберіть відповідь</span>
       <div className='options'>
         {yes_no_options
-          ? yesNoOptions.map((option, index) => (
+          ? yesNoOptions.map((answer, index) => (
               <button
-                className={selectedOption === option ? 'active' : ''}
+                className={selectedOption === answer ? 'active' : ''}
                 onClick={() => {
-                  setSelectedOption(option);
+                  setSelectedOption(answer);
                 }}
                 key={`${generatedId}-${index}`}
               >
-                {option}
+                {answer}
               </button>
             ))
-          : options.map(({ children }, index) => {
-              return (
-                <button
-                  className={selectedOption === children[0].text ? 'active' : ''}
-                  onClick={() => {
-                    setSelectedOption(children[0].text);
-                  }}
-                  key={`${generatedId}-${index}`}
-                >
-                  <Paragraph children={children} />
-                </button>
-              );
-            })}
+          : answers.map(({ id, text }) => (
+              <button
+                className={selectedOption === text ? 'active' : ''}
+                onClick={() => {
+                  setSelectedOption(text);
+                }}
+                key={id}
+              >
+                {text}
+              </button>
+            ))}
       </div>
       {error && <p className='error text-xs'>Ви не обрали жодної відповіді</p>}
       <button className='gray-btn' onClick={handleClick}>

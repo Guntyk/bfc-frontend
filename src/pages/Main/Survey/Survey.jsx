@@ -11,7 +11,10 @@ import 'pages/Main/Survey/Survey.css';
 export default function Survey() {
   const [isModalOpen, setOpenModalId] = useState(false);
   const surveys = useSelector(surveysSelector);
+  const userAgent = navigator.userAgent;
   const dispatch = useDispatch();
+
+  const safari = userAgent.indexOf('Safari') !== -1 && userAgent.indexOf('Chrome') === -1 && userAgent.indexOf('Chromium') === -1;
 
   useEffect(() => {
     if (surveys.length === 0) {
@@ -25,16 +28,16 @@ export default function Survey() {
         <h2 className='title underline'>Опитування</h2>
       </div>
       {surveys[0] !== 'error' ? (
-        surveys.map(({ id, attributes: { yes_no_options, options, description } }) => {
+        surveys.map(({ id, attributes: { yes_no_options, answers, description } }) => {
           const textLength = description.flatMap((desc) => desc.children).reduce((totalLength, { text }) => totalLength + text.length, 0);
 
           return (
             <div className='survey-background' key={id}>
               <div className='container'>
                 <div className='survey'>
-                  <SurveyForm id={id} yes_no_options={yes_no_options} options={options} />
+                  <SurveyForm id={id} yes_no_options={yes_no_options} answers={answers} />
                   <div>
-                    <div className='survey-content'>
+                    <div className={`survey-content ${safari ? 'safari' : ''}`}>
                       <RichContent content={description} />
                     </div>
                     {textLength > 800 && (

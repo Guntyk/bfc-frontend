@@ -31,8 +31,10 @@
 }
 
 .survey-content p {
-  display: inline;
   margin-bottom: 1rem;
+}
+.survey-content.safari p {
+  display: inline;
 }
 
 .choose-option-title {
@@ -145,5 +147,8 @@
   }
   .survey .error {
     font-size: 1.2rem;
+  }
+  .thanks {
+    margin-bottom: 0;
   }
 }

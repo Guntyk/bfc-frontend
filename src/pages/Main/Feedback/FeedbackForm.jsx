@@ -2,16 +2,23 @@ import { sendMessageToBot } from 'api/requests';
 import { useState } from 'react';
 
 export default function FeedbackForm() {
+  const [error, setError] = useState(false);
   const [sent, setSent] = useState(false);
 
   function handleSubmit(e) {
     e.preventDefault();
 
     const { name, contact, text } = e.target;
-    const message = `👤Ім'я: ${name.value}\n📞Контакт: ${contact.value}\n💬Повідомлення: ${text.value}`;
-
-    sendMessageToBot(message);
-    setSent(true);
+    console.log(name.value);
+    console.log(contact.value);
+    console.log(text.value);
+    if (name.value === '' || contact.value === '' || text.value === '') {
+      setError(true);
+    } else {
+      const message = `👤Ім'я: ${name.value}\n📞Контакт: ${contact.value}\n💬Повідомлення: ${text.value}`;
+      sendMessageToBot(message);
+      setSent(true);
+    }
   }
 
   if (!sent) {
@@ -22,9 +29,8 @@ export default function FeedbackForm() {
           <input className='contact-input' name='contact' type='text' placeholder='Номер телефону чи E-Mail' />
         </div>
         <textarea name='text' cols='30' rows='10' placeholder='Ваше повідомлення...' />
-        <button type='submit' disabled={false}>
-          Надіслати
-        </button>
+        {error && <p className='error'>Заповніть усі поля</p>}
+        <button type='submit'>Надіслати</button>
       </form>
     );
   } else {

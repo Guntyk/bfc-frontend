@@ -81,6 +81,14 @@
   flex-shrink: 1.3;
 }
 
+.feedback-form .error {
+  letter-spacing: 0.05rem;
+}
+.feedback-form .error::before {
+  content: url(icons/error.svg);
+  margin-right: 1rem;
+}
+
 .feedback-background {
   position: absolute;
   top: -136%;

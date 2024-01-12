@@ -55,7 +55,7 @@ export default function SurveyForm({ id, yes_no_options, options }) {
               );
             })}
       </div>
-      {error && <p className='error text-xs'>Ви не вибрали жодної відповіді</p>}
+      {error && <p className='error text-xs'>Ви не обрали жодної відповіді</p>}
       <button className='gray-btn' onClick={handleClick}>
         Я підтверджую свій вибір
       </button>

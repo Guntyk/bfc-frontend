@@ -5,7 +5,7 @@ const defaultState = [];
 export function newsReducer(state = defaultState, action) {
   switch (action.type) {
     case GET_NEWS:
-      return [...action.newsArr];
+      return action.newsArr;
     case INCREASE_VIEWS:
       const newsIndex = state.findIndex((news) => news.id === action.updatedNewsObj.id);
 

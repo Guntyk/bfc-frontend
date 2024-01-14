@@ -40,7 +40,7 @@
 .news-content {
   display: flex;
   flex-direction: column;
-  gap: 3rem;
+  gap: 2rem;
   margin-top: 3.7rem;
   line-height: 1.5;
 }

@@ -23,7 +23,6 @@ export function getNews() {
   return (dispatch) => {
     getNewsFetch().then(([newsErr, news]) => {
       if (news) {
-        console.log(removeEmptyTextFromArray(news.data));
         dispatch(getNewsAction(removeEmptyTextFromArray(news.data).reverse()));
       } else {
         dispatch(setErrorAction());

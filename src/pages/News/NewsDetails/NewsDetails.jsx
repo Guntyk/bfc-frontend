@@ -55,7 +55,6 @@ export default function NewsDetails() {
       dispatch(increaseNewsViews(newsId, currentNews));
       setViewsIncreased(true);
     }
-    currentNews && console.log(currentNews);
   }, [currentNews]);
 
   useEffect(() => {

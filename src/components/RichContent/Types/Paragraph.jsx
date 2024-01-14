@@ -23,7 +23,7 @@ export default function Paragraph({ children }) {
         }
 
         return type === 'link' ? (
-          <Link children={children} url={url} />
+          <Link children={children} url={url} key={`${id}-${index}`} />
         ) : textStyle.length === 0 ? (
           text
         ) : (

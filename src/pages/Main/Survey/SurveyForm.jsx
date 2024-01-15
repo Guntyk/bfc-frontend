@@ -10,7 +10,9 @@ export default function SurveyForm({ id, surveys, answers }) {
   const [error, setError] = useState(false);
   const dispatch = useDispatch();
 
-  function handleClick() {
+  function handleSubmit(e) {
+    e.preventDefault();
+
     if (selectedOption) {
       setConfirmedOption(selectedOption);
     } else {
@@ -30,7 +32,7 @@ export default function SurveyForm({ id, surveys, answers }) {
       dispatch(vote(currentSurvey.id, answerToVote, answers));
     }
 
-    // confirmedOption && window.localStorage.setItem(`survey ${id}`, confirmedOption);
+    //! confirmedOption && window.localStorage.setItem(`survey ${id}`, confirmedOption);
   }, [confirmedOption]);
 
   useEffect(() => {
@@ -41,43 +43,32 @@ export default function SurveyForm({ id, surveys, answers }) {
   }, []);
 
   return (
-    <div className='survey-form'>
-      <button
-        onClick={() => {
-          setConfirmedOption(null);
-          setSelectedOption(null);
-        }}
-      >
-        Clear
-      </button>
+    <form className='survey-form' onSubmit={handleSubmit}>
       <span className='title-s choose-option-title'>Оберіть відповідь</span>
-      <div className={`options ${confirmedOption && 'voted'}`}>
+      <div className={`options ${confirmedOption ? 'voted' : ''}`}>
         {answers.map(({ id, text, responses }) => (
-          <div key={id}>
-            {confirmedOption && (
-              <div className='results'>
-                <span>{Math.round((responses / votesAmount) * 100)}%</span>
-                <span>{responses} голосів</span>
-                <hr className='progress-bar' style={{ width: `${Math.round((responses / votesAmount) * 100)}%` }} />
-              </div>
-            )}
-            <button
+          <div className='option' key={id}>
+            <div className='progress-bar' style={{ width: `${Math.round((responses / votesAmount) * 100)}%` }} />
+            <input
+              id={id}
+              type='radio'
+              name='vote'
               className={`option-btn ${selectedOption === id ? 'active' : ''}`}
               onClick={() => {
                 setSelectedOption(id);
               }}
-            >
+            />
+            <label htmlFor={id}>
               {text}
-            </button>
+              <span className='percentage'>{confirmedOption && <span>{Math.round((responses / votesAmount) * 100)}%</span>}</span>
+            </label>
           </div>
         ))}
       </div>
       {error && <p className='error text-xs'>Ви не обрали жодної відповіді</p>}
-      {!confirmedOption && (
-        <button className='gray-btn' onClick={handleClick}>
-          Я підтверджую свій вибір
-        </button>
-      )}
-    </div>
+      <button className='gray-btn' type='submit' disabled={confirmedOption}>
+        {confirmedOption ? 'Дякуємо за відповідь' : 'Я підтверджую свій вибір'}
+      </button>
+    </form>
   );
 }

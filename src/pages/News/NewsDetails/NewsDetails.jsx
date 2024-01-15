@@ -12,6 +12,7 @@ import { backendURL } from 'constants/backendURL';
 import placeholder from 'icons/image-placeholder.svg';
 import background from 'images/background-3.svg';
 import 'pages/News/NewsDetails/NewsDetails.css';
+import VideoPlayer from 'components/VideoPlayer/VideoPlayer';
 
 export default function NewsDetails() {
   const [viewsIncreased, setViewsIncreased] = useState(false);
@@ -73,8 +74,12 @@ export default function NewsDetails() {
             {currentNews ? (
               <>
                 <div className='news-details'>
-                  {currentNews?.cover?.data?.attributes && (
-                    <img src={`${backendURL}${currentNews.cover.data.attributes.url}`} alt='news cover' className='news-cover' />
+                  {currentNews?.video?.data?.attributes ? (
+                    <VideoPlayer src={`${backendURL}${currentNews.video.data.attributes.url}`} className='news-cover' />
+                  ) : (
+                    currentNews?.cover?.data?.attributes && (
+                      <img src={`${backendURL}${currentNews.cover.data.attributes.url}`} alt='news cover' className='news-cover' />
+                    )
                   )}
                   <div className={window.innerWidth <= 768 ? 'container' : ''}>
                     {currentNews.cover_description && <p className='img-description text-s'>{currentNews.cover_description}</p>}

@@ -103,7 +103,7 @@ export default function Footer() {
             })}
           </div>
         ) : (
-          <Loader />
+          <Loader className='footer-loader' />
         )}
       </footer>
     </div>

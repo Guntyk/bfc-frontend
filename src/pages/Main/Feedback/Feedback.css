@@ -102,6 +102,11 @@
   width: 46.2rem;
 }
 
+.feedback-loader {
+  margin-top: 0;
+  margin-left: 15rem;
+}
+
 @media (max-width: 1280px) {
   .feedback {
     margin-top: 5.5rem;
@@ -139,6 +144,10 @@
 
   .feedback-form button {
     margin-top: 1rem;
+  }
+  .feedback-loader {
+    margin-bottom: 5rem;
+    margin-left: 0;
   }
 }
 

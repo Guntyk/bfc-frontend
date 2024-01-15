@@ -58,7 +58,7 @@ export default function Feedback() {
               })}
             </div>
           ) : (
-            <Loader />
+            <Loader className='feedback-loader' />
           )}
         </div>
         <div>

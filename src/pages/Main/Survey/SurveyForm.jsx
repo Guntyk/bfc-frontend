@@ -7,6 +7,7 @@ export default function SurveyForm({ id, surveys, answers }) {
   const [selectedOption, setSelectedOption] = useState(null);
   const [currentSurvey, setCurrentSurvey] = useState(null);
   const [votesAmount, setVotesAmount] = useState(0);
+  const [voted, setVoted] = useState(false);
   const [error, setError] = useState(false);
   const dispatch = useDispatch();
 
@@ -21,33 +22,40 @@ export default function SurveyForm({ id, surveys, answers }) {
   }
 
   useEffect(() => {
-    if (confirmedOption) {
-      setVotesAmount(currentSurvey.attributes.answers.reduce((total, answer) => total + answer.responses, 0) + 1);
-      const {
-        attributes: { answers },
-      } = currentSurvey;
-
-      const answerToVote = answers.find((answer) => answer.id === confirmedOption);
-
-      dispatch(vote(currentSurvey.id, answerToVote, answers));
-    }
-
-    //! confirmedOption && window.localStorage.setItem(`survey ${id}`, confirmedOption);
-  }, [confirmedOption]);
-
-  useEffect(() => {
     const previousAnswer = window.localStorage.getItem(`survey ${id}`);
-    previousAnswer && setConfirmedOption(previousAnswer);
+    console.log(previousAnswer);
+    if (previousAnswer) {
+      setVoted(true);
+      setConfirmedOption(previousAnswer);
+    }
 
     setCurrentSurvey(surveys.find((survey) => survey.id === id));
   }, []);
+
+  useEffect(() => {
+    if (confirmedOption) {
+      const radioInput = document.getElementById(confirmedOption);
+      const {
+        attributes: { answers },
+      } = currentSurvey;
+      const answerToVote = answers.find((answer) => answer.id === confirmedOption);
+
+      setVotesAmount(currentSurvey.attributes.answers.reduce((total, answer) => total + answer.responses, 0) + 1);
+
+      if (radioInput) {
+        radioInput.checked = true;
+      }
+      !voted && dispatch(vote(currentSurvey.id, answerToVote, answers));
+      !window.localStorage.getItem(`survey ${id}`) && window.localStorage.setItem(`survey ${id}`, confirmedOption);
+    }
+  }, [confirmedOption]);
 
   return (
     <form className='survey-form' onSubmit={handleSubmit}>
       <span className='title-s choose-option-title'>Оберіть відповідь</span>
       <div className={`options ${confirmedOption ? 'voted' : ''}`}>
         {answers.map(({ id, text, responses }) => (
-          <div className='option' key={id}>
+          <div className={`option ${confirmedOption === String(id) ? 'voted' : ''}`} key={id}>
             <div className='progress-bar' style={{ width: `${Math.round((responses / votesAmount) * 100)}%` }} />
             <input
               id={id}
@@ -59,8 +67,8 @@ export default function SurveyForm({ id, surveys, answers }) {
               }}
             />
             <label htmlFor={id}>
-              {text}
               <span className='percentage'>{confirmedOption && <span>{Math.round((responses / votesAmount) * 100)}%</span>}</span>
+              <span className='label-text'>{text}</span>
             </label>
           </div>
         ))}

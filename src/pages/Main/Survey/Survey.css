@@ -105,9 +105,8 @@
 .option input:checked ~ label::before {
   content: url(icons/check.svg);
   position: absolute;
-  right: -2.5rem;
   right: 1.5rem;
-  top: 60%;
+  top: 56%;
   transform: translateY(-50%);
 }
 .option .percentage {
@@ -129,6 +128,9 @@
   transform: translateY(-50%);
 }
 
+.option .label-text {
+  padding-right: 2rem;
+}
 .option span {
   transition: 0.5s;
   transform: translateX(-5.5rem);

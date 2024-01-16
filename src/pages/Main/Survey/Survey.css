@@ -121,7 +121,6 @@
   position: absolute;
   top: 50%;
   right: 0;
-  display: block;
   width: 0.2rem;
   height: 100%;
   background: var(--blue);
@@ -202,6 +201,7 @@
     display: flex;
     flex-direction: column;
     align-items: center;
+    margin: 0;
   }
   .survey-form .options {
     margin: 3.5em 0 2.5rem;

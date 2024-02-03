@@ -7,13 +7,9 @@ export function newsReducer(state = defaultState, action) {
     case GET_NEWS:
       return action.newsArr;
     case INCREASE_VIEWS:
-      const newsIndex = state.findIndex((news) => news.id === action.updatedNewsObj.id);
+      const { updatedNewsObj } = action;
 
-      if (newsIndex !== -1) {
-        return [...state.slice(0, newsIndex), action.updatedNewsObj, ...state.slice(newsIndex + 1)];
-      } else {
-        return state;
-      }
+      return state.map((news) => (news.id === updatedNewsObj[0].id ? updatedNewsObj[0] : news));
     case SET_ERROR:
       return ['error'];
     default:

@@ -9,9 +9,6 @@ export default function FeedbackForm() {
     e.preventDefault();
 
     const { name, contact, text } = e.target;
-    console.log(name.value);
-    console.log(contact.value);
-    console.log(text.value);
     if (name.value === '' || contact.value === '' || text.value === '') {
       setError(true);
     } else {

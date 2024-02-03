@@ -18,7 +18,6 @@ export default function NewsDetails() {
   const [viewsIncreased, setViewsIncreased] = useState(false);
   const [recommendedNews, setRecommendedNews] = useState([]);
   const [currentNews, setCurrentNews] = useState(null);
-  const [oldNewsId, setOldNewsId] = useState(null);
   const news = useSelector(newsSelector);
   const { push, replace } = useHistory();
   const dispatch = useDispatch();
@@ -26,7 +25,6 @@ export default function NewsDetails() {
 
   useEffect(() => {
     window.scrollTo(0, 0);
-    setOldNewsId(newsId);
     if (news.length === 0) {
       dispatch(getNews());
     }
@@ -59,9 +57,7 @@ export default function NewsDetails() {
   }, [currentNews]);
 
   useEffect(() => {
-    if (newsId !== oldNewsId) {
-      setViewsIncreased(false);
-    }
+    setViewsIncreased(false);
   }, [newsId]);
 
   return (

@@ -23,7 +23,7 @@ export default function SurveyForm({ id, surveys, answers }) {
 
   useEffect(() => {
     const previousAnswer = window.localStorage.getItem(`survey ${id}`);
-    console.log(previousAnswer);
+
     if (previousAnswer) {
       setVoted(true);
       setConfirmedOption(previousAnswer);
@@ -33,22 +33,25 @@ export default function SurveyForm({ id, surveys, answers }) {
   }, []);
 
   useEffect(() => {
-    if (confirmedOption) {
-      const radioInput = document.getElementById(confirmedOption);
-      const {
-        attributes: { answers },
-      } = currentSurvey;
-      const answerToVote = answers.find((answer) => answer.id === confirmedOption);
-
-      setVotesAmount(currentSurvey.attributes.answers.reduce((total, answer) => total + answer.responses, 0) + 1);
-
-      if (radioInput) {
-        radioInput.checked = true;
-      }
-      !voted && dispatch(vote(currentSurvey.id, answerToVote, answers));
-      !window.localStorage.getItem(`survey ${id}`) && window.localStorage.setItem(`survey ${id}`, confirmedOption);
+    if (!confirmedOption) return;
+  
+    const radioInput = document.getElementById(confirmedOption);
+    radioInput && (radioInput.checked = true);
+  
+    const { id, attributes: { answers } } = currentSurvey;
+    const answerToVote = answers.find(answer => answer.id === confirmedOption);
+  
+    if (!voted) {
+      dispatch(vote(id, answerToVote, answers));
     }
+  
+    const totalResponses = answers.reduce((total, answer) => total + Number(answer.responses), 0);
+    setVotesAmount(voted ? totalResponses : totalResponses + 1);
+  
+    const localStorageKey = `survey ${id}`;
+    !window.localStorage.getItem(localStorageKey) && window.localStorage.setItem(localStorageKey, confirmedOption);
   }, [confirmedOption]);
+  
 
   return (
     <form className='survey-form' onSubmit={handleSubmit}>

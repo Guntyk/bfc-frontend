@@ -4,7 +4,6 @@ import { getContactsFetch } from 'api/requests';
 import { formatPhoneNumber } from 'helpers/formatPhoneNumber';
 import FeedbackForm from 'pages/Main/Feedback/FeedbackForm';
 import Loader from 'components/Loader/Loader';
-import feedbackBackground from 'images/background-2.svg';
 import 'pages/Main/Feedback/Feedback.css';
 
 export default function Feedback() {
@@ -26,47 +25,48 @@ export default function Feedback() {
   }, []);
 
   return (
-    <section className='feedback'>
-      <h2 className='title underline'>Зворотній зв’язок</h2>
-      <div className='feedback-wrapper'>
-        <div>
-          <h3 className='title-xl feedback-title' id='contacts'>
-            Контакти
-          </h3>
-          {Object.keys(contacts).length > 0 ? (
-            <div className='contacts'>
-              {Object.entries(contacts).map(([contact, value], index) => {
-                if (contact === 'phone') {
-                  return (
-                    <div className='contact phone' key={`${id}-${index}`}>
-                      <span className='title'>Номер телефону</span>
-                      <a className='title-l underline' href={`tel:${value}`} rel='noreferrer noopener'>
-                        {formatPhoneNumber(value)}
-                      </a>
-                    </div>
-                  );
-                } else if (contact === 'email') {
-                  return (
-                    <div className='contact email' key={`${id}-${index}`}>
-                      <span className='title'>Електронна пошта</span>
-                      <a className='title-l underline' href={`mailto:${value}`} target='_blank' rel='noreferrer noopener'>
-                        {value}
-                      </a>
-                    </div>
-                  );
-                }
-              })}
+    <div className='feedback-background' id='contacts'>
+      <div className='container'>
+        <section className='feedback'>
+          <h2 className='title underline'>Зворотній зв’язок</h2>
+          <div className='feedback-wrapper'>
+            <div>
+              <h3 className='title-xl feedback-title'>Контакти</h3>
+              {Object.keys(contacts).length > 0 ? (
+                <div className='contacts'>
+                  {Object.entries(contacts).map(([contact, value], index) => {
+                    if (contact === 'phone') {
+                      return (
+                        <div className='contact phone' key={`${id}-${index}`}>
+                          <span className='title'>Номер телефону</span>
+                          <a className='title-l underline' href={`tel:${value}`} rel='noreferrer noopener'>
+                            {formatPhoneNumber(value)}
+                          </a>
+                        </div>
+                      );
+                    } else if (contact === 'email') {
+                      return (
+                        <div className='contact email' key={`${id}-${index}`}>
+                          <span className='title'>Електронна пошта</span>
+                          <a className='title-l underline' href={`mailto:${value}`} target='_blank' rel='noreferrer noopener'>
+                            {value}
+                          </a>
+                        </div>
+                      );
+                    }
+                  })}
+                </div>
+              ) : (
+                <Loader className='feedback-loader' />
+              )}
             </div>
-          ) : (
-            <Loader className='feedback-loader' />
-          )}
-        </div>
-        <div>
-          <h3 className='title-xl feedback-title'>Зв'язок</h3>
-          <FeedbackForm />
-        </div>
+            <div>
+              <h3 className='title-xl feedback-title'>Зв'язок</h3>
+              <FeedbackForm />
+            </div>
+          </div>
+        </section>
       </div>
-      <img className='feedback-background' src={feedbackBackground} alt='Background' />
-    </section>
+    </div>
   );
 }

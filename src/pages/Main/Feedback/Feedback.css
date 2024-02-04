@@ -4,6 +4,15 @@
   padding: 0;
 }
 
+.feedback-background {
+  width: 100%;
+  background: url('images/background-2.svg') no-repeat -385px 38.5%;
+  padding-top: 15rem;
+  margin-top: -15rem;
+  padding-bottom: 0.1rem;
+  margin-bottom: -0.1rem;
+}
+
 .feedback-wrapper {
   display: flex;
   justify-content: space-between;
@@ -89,15 +98,6 @@
   margin-right: 1rem;
 }
 
-.feedback-background {
-  position: absolute;
-  top: -136%;
-  left: -19.5%;
-  width: 152.2rem;
-  height: 150.91rem;
-  z-index: -1;
-}
-
 .feedback-thanks {
   width: 46.2rem;
 }
@@ -172,12 +172,5 @@
   }
   .feedback-form .inputs-group input:first-child {
     margin-bottom: 1.5rem;
-  }
-
-  .feedback-background {
-    top: -47%;
-    left: -53%;
-    width: 95.2rem;
-    height: 93.91rem;
   }
 }

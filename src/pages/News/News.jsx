@@ -11,6 +11,7 @@ import placeholder from 'icons/image-placeholder.svg';
 import 'pages/News/News.css';
 
 export default function News() {
+  const [showLoader, setShowLoader] = useState(true);
   const [newsAmount, setNewsAmount] = useState(10);
   const news = useSelector(newsSelector);
   const dispatch = useDispatch();
@@ -22,6 +23,12 @@ export default function News() {
     if (news.length === 0) {
       dispatch(getNews());
     }
+
+    const timer = setTimeout(() => {
+      setShowLoader(false);
+    }, 10000);
+
+    return () => clearTimeout(timer);
   }, []);
 
   return (
@@ -78,8 +85,10 @@ export default function News() {
                   </button>
                 )}
               </>
-            ) : (
+            ) : showLoader ? (
               <Loader />
+            ) : (
+              <p className='no-news'>На жаль, новин немає 😔</p>
             )
           ) : (
             <Redirect to='/error' />

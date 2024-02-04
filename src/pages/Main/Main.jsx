@@ -12,9 +12,7 @@ export default function Main() {
       <Team />
       <News />
       <Survey />
-      <div className='container'>
-        <Feedback />
-      </div>
+      <Feedback />
     </main>
   );
 }

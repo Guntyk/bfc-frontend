@@ -69,6 +69,16 @@
   margin: 0 auto;
 }
 
+.no-news {
+  margin-top: 5rem;
+  font-size: 2rem;
+  text-align: center;
+}
+
+.main .news .loader-wrapper {
+  margin-top: 5rem;
+}
+
 @media (min-width: 768px) {
   .news {
     max-width: 128rem;
@@ -99,5 +109,10 @@
   }
   .news-card img {
     margin: 0.08rem 0 0.837rem;
+  }
+  .no-news {
+    margin-top: 4rem;
+    font-size: 1.6rem;
+    text-align: center;
   }
 }

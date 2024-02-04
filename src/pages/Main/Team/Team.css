@@ -4,6 +4,12 @@
   padding: 7rem 0 10rem;
 }
 
+.team-background {
+  background: url('images/background-1.svg') no-repeat 0 25% / cover;
+  padding-bottom: 60rem;
+  margin-bottom: -60rem;
+}
+
 .team-list {
   display: flex;
   gap: 2.5rem;
@@ -58,15 +64,6 @@
 
 .person-card .read-bio {
   margin-top: 1rem;
-}
-
-.team-background {
-  position: absolute;
-  top: -15%;
-  right: -15%;
-  width: 165rem;
-  height: 155rem;
-  z-index: -1;
 }
 
 @media (min-width: 1281px) {

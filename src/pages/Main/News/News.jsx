@@ -1,6 +1,6 @@
 import { useHistory, Redirect } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
-import { useEffect } from 'react';
+import { useEffect, useState } from 'react';
 import { newsSelector } from 'redux/news/selectors';
 import { getNews } from 'redux/news/thunk';
 import { formatDateToLocalFormat } from 'helpers/formatDateToLocalFormat';
@@ -10,6 +10,7 @@ import placeholder from 'icons/image-placeholder.svg';
 import 'pages/Main/News/News.css';
 
 export default function News() {
+  const [showLoader, setShowLoader] = useState(true);
   const news = useSelector(newsSelector);
   const { push } = useHistory();
   const dispatch = useDispatch();
@@ -20,6 +21,12 @@ export default function News() {
     if (news.length === 0) {
       dispatch(getNews());
     }
+
+    const timer = setTimeout(() => {
+      setShowLoader(false);
+    }, 10000);
+
+    return () => clearTimeout(timer);
   }, []);
 
   return (
@@ -63,8 +70,10 @@ export default function News() {
               ),
             )}
           </ul>
-        ) : (
+        ) : showLoader ? (
           <Loader />
+        ) : (
+          <p className='no-news'>На жаль, новин немає 😔</p>
         )
       ) : (
         <Redirect to='/error' />

@@ -1,84 +1,109 @@
 import { useEffect, useState } from 'react';
 import { useDispatch } from 'react-redux';
-import { vote } from 'redux/surveys/thunk';
+import { vote as voteThunk } from 'redux/surveys/thunk';
 
-export default function SurveyForm({ id, surveys, answers }) {
-  const [confirmedOption, setConfirmedOption] = useState(null);
+export default function SurveyForm({ id, surveys }) {
   const [selectedOption, setSelectedOption] = useState(null);
   const [currentSurvey, setCurrentSurvey] = useState(null);
-  const [votesAmount, setVotesAmount] = useState(0);
   const [voted, setVoted] = useState(false);
   const [error, setError] = useState(false);
   const dispatch = useDispatch();
 
-  function handleSubmit(e) {
+  useEffect(() => {
+    const survey = surveys.find((survey) => survey.id === id);
+    if (survey) {
+      setCurrentSurvey(survey);
+    }
+
+    const previousAnswer = window.localStorage.getItem(`survey ${id}`);
+    if (previousAnswer) {
+      setVoted(true);
+      setSelectedOption(previousAnswer);
+    }
+  }, [id, surveys]);
+
+  const handleSubmit = (e) => {
     e.preventDefault();
 
-    if (selectedOption) {
-      setConfirmedOption(selectedOption);
+    if (selectedOption && currentSurvey) {
+      setError(false);
+      const {
+        id,
+        attributes: { answers },
+      } = currentSurvey;
+      const answerToVote = answers.find(({ id }) => id === selectedOption);
+
+      if (!voted) {
+        dispatch(voteThunk(id, answerToVote, answers));
+        window.localStorage.setItem(`survey ${id}`, selectedOption);
+        setVoted(true);
+      }
     } else {
       setError(true);
     }
-  }
+  };
 
-  useEffect(() => {
-    const previousAnswer = window.localStorage.getItem(`survey ${id}`);
-
-    if (previousAnswer) {
-      setVoted(true);
-      setConfirmedOption(previousAnswer);
+  const calculatePercentages = () => {
+    if (!currentSurvey || !currentSurvey.attributes || !currentSurvey.attributes.answers) {
+      return {};
     }
 
-    setCurrentSurvey(surveys.find((survey) => survey.id === id));
-  }, []);
+    const { answers } = currentSurvey.attributes;
+    const totalResponses = answers.reduce((total, { responses }) => total + responses, 0);
+    let percentages = answers.map(({ id, responses }) => ({
+      id,
+      percentage: (responses / totalResponses) * 100,
+    }));
 
-  useEffect(() => {
-    if (!confirmedOption) return;
-  
-    const radioInput = document.getElementById(confirmedOption);
-    radioInput && (radioInput.checked = true);
-  
-    const { id, attributes: { answers } } = currentSurvey;
-    const answerToVote = answers.find(answer => answer.id === confirmedOption);
-  
-    if (!voted) {
-      dispatch(vote(id, answerToVote, answers));
-    }
-  
-    const totalResponses = answers.reduce((total, answer) => total + Number(answer.responses), 0);
-    setVotesAmount(voted ? totalResponses : totalResponses + 1);
-  
-    const localStorageKey = `survey ${id}`;
-    !window.localStorage.getItem(localStorageKey) && window.localStorage.setItem(localStorageKey, confirmedOption);
-  }, [confirmedOption]);
-  
+    let roundedPercentages = percentages.map((answer) => ({
+      ...answer,
+      rounded: Math.round(answer.percentage),
+      difference: answer.percentage - Math.round(answer.percentage),
+    }));
+
+    let totalRounded = roundedPercentages.reduce((total, { rounded }) => total + rounded, 0);
+    let error = 100 - totalRounded;
+
+    roundedPercentages
+      .sort((a, b) => Math.abs(b.difference) - Math.abs(a.difference))
+      .forEach(({ rounded }, index) => {
+        if (index < Math.abs(error)) {
+          rounded += error > 0 ? 1 : -1;
+        }
+      });
+
+    return roundedPercentages.reduce((acc, { id, rounded }) => ({ ...acc, [id]: rounded }), {});
+  };
+
+  const percentages = currentSurvey ? calculatePercentages() : {};
 
   return (
     <form className='survey-form' onSubmit={handleSubmit}>
       <span className='title-s choose-option-title'>Оберіть відповідь</span>
-      <div className={`options ${confirmedOption ? 'voted' : ''}`}>
-        {answers.map(({ id, text, responses }) => (
-          <div className={`option ${confirmedOption === String(id) ? 'voted' : ''}`} key={id}>
-            <div className='progress-bar' style={{ width: `${Math.round((responses / votesAmount) * 100)}%` }} />
-            <input
-              id={id}
-              type='radio'
-              name='vote'
-              className={`option-btn ${selectedOption === id ? 'active' : ''}`}
-              onClick={() => {
-                setSelectedOption(id);
-              }}
-            />
-            <label htmlFor={id}>
-              <span className='percentage'>{confirmedOption && <span>{Math.round((responses / votesAmount) * 100)}%</span>}</span>
-              <span className='label-text'>{text}</span>
-            </label>
-          </div>
-        ))}
-      </div>
+      {currentSurvey && currentSurvey.attributes && currentSurvey.attributes.answers && (
+        <div className={`options ${voted ? 'voted' : ''}`}>
+          {currentSurvey.attributes.answers.map(({ id, text }) => (
+            <div className={`option ${selectedOption === String(id) ? 'voted' : ''}`} key={id}>
+              <div className='progress-bar' style={{ width: `${percentages[id]}%` }}></div>
+              <input
+                id={id}
+                type='radio'
+                name='vote'
+                className={`option-btn ${selectedOption === id ? 'active' : ''}`}
+                onClick={() => setSelectedOption(id)}
+                disabled={voted}
+              />
+              <label htmlFor={id}>
+                <span className='percentage'>{voted && `${percentages[id]}%`}</span>
+                <span className='label-text'>{text}</span>
+              </label>
+            </div>
+          ))}
+        </div>
+      )}
       {error && <p className='error text-xs'>Ви не обрали жодної відповіді</p>}
-      <button className='gray-btn' type='submit' disabled={confirmedOption}>
-        {confirmedOption ? 'Дякуємо за відповідь' : 'Я підтверджую свій вибір'}
+      <button className='gray-btn' type='submit' disabled={voted || !selectedOption}>
+        {voted ? 'Дякуємо за відповідь' : 'Я підтверджую свій вибір'}
       </button>
     </form>
   );
